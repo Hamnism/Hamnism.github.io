@@ -1,0 +1,8 @@
+# Lichen app-ads.txt
+# AdMob で本番アプリ ID が発行された後、Google が指示する 1 行を以下に貼り付けてください。
+# 例:
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+#
+# 公開後の URL:
+#   https://hamnism.github.io/lichen/app-ads.txt
+# AdMob のアプリ設定で「app-ads.txt URL」をこの完全な URL に設定してください。

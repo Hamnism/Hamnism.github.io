@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lichen — 上品な掲示板ブラウザ for iOS</title>
+<meta name="description" content="Lichen は 5ch・したらば・おーぷん 2ch などの monazilla 互換掲示板を快適に閲覧できる iOS 専用ブラウザです。">
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink1: #15171c;
+    --ink2: #41464f;
+    --ink3: #757b85;
+    --ink4: #a8adb6;
+    --ink5: #d4d8de;
+    --teal: #1FA68A;
+    --coral: #FF8557;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f141a;
+      --ink1: #e8eaf0;
+      --ink2: #bfc4cc;
+      --ink3: #8a9099;
+      --ink4: #5e646d;
+      --ink5: #2a2f36;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--ink1);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", system-ui, sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+  }
+  .brand {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    background: linear-gradient(90deg, var(--teal), var(--coral));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin: 0 0 8px;
+  }
+  .tagline {
+    font-size: 14px;
+    color: var(--ink3);
+    margin: 0 0 48px;
+  }
+  h2 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin: 48px 0 12px;
+  }
+  p { color: var(--ink2); margin: 0 0 16px; font-size: 14px; }
+  .lead { color: var(--ink1); font-size: 16px; line-height: 1.8; }
+  ul { padding-left: 18px; color: var(--ink2); font-size: 14px; }
+  li { margin-bottom: 6px; }
+  a { color: var(--teal); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .link-card {
+    display: inline-block;
+    padding: 10px 16px;
+    border: 0.5px solid var(--ink5);
+    border-radius: 10px;
+    font-size: 13px;
+    color: var(--ink1);
+    background: var(--bg);
+  }
+  .link-card:hover {
+    border-color: var(--teal);
+    text-decoration: none;
+  }
+  .meta {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 0.5px solid var(--ink5);
+    color: var(--ink4);
+    font-size: 11px;
+  }
+  .meta a { color: var(--ink3); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1 class="brand">Lichen</h1>
+  <p class="tagline">上品な掲示板ブラウザ for iOS</p>
+
+  <p class="lead">
+    Lichen は、5ch・したらば・おーぷん 2ch・2ch.sc・Next2ch・MMOBBS・ぷにぷに電機 などの monazilla 互換掲示板を、iPhone から快適に読めるアプリです。
+  </p>
+
+  <h2>特長</h2>
+  <ul>
+    <li>白基調の落ち着いたデザイン (ダークモード対応)</li>
+    <li>Live モード / Classic モードの 2 つの表示</li>
+    <li>板単位でスレを保存できるオフラインキャッシュ</li>
+    <li>NG ワード / NG 名前 / NG ID / NG スレタイトル の本格 NG フィルタ</li>
+    <li>スレ読み上げ機能 (画面オフ抑止つき)</li>
+    <li>カメラ / 写真 / 手書き / 音声入力からの投稿</li>
+    <li>UPLIFT (5ch 公式有料プラン) ログインで 5ch の広告を非表示</li>
+    <li>閲覧履歴・投稿履歴・お気に入りはすべて端末内で完結 (サーバー送信なし)</li>
+  </ul>
+
+  <h2>ダウンロード</h2>
+  <p>App Store にて準備中です。</p>
+
+  <h2>ドキュメント</h2>
+  <div class="links">
+    <a class="link-card" href="terms.html">利用規約</a>
+    <a class="link-card" href="privacy.html">プライバシーポリシー</a>
+    <a class="link-card" href="https://github.com/Hamnism/lichen">GitHub</a>
+  </div>
+
+  <h2>お問い合わせ</h2>
+  <p>
+    アプリに関するお問い合わせ・不具合報告は、<a href="https://docs.google.com/forms/d/e/1FAIpQLSd4I7OWbrU6jHNYPw7H5AtCIFKvfTbTTXPltGpdKToBf_vw4w/viewform">こちらのフォーム</a>からお願いいたします。
+  </p>
+
+  <div class="meta">
+    Lichen App<br>
+    運営: Mano Tachihara<br>
+    © 2026 Lichen App
+  </div>
+
+</div>
+</body>
+</html>

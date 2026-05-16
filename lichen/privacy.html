@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>プライバシーポリシー — Lichen</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink1: #15171c;
+    --ink2: #41464f;
+    --ink3: #757b85;
+    --ink4: #a8adb6;
+    --ink5: #d4d8de;
+    --teal: #1FA68A;
+    --coral: #FF8557;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f141a;
+      --ink1: #e8eaf0;
+      --ink2: #bfc4cc;
+      --ink3: #8a9099;
+      --ink4: #5e646d;
+      --ink5: #2a2f36;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--ink1);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", system-ui, sans-serif;
+    line-height: 1.8;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 48px 24px 96px; }
+  .brand-row { margin-bottom: 32px; }
+  .brand {
+    font-size: 18px; font-weight: 700; letter-spacing: 1px;
+    background: linear-gradient(90deg, var(--teal), var(--coral));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .crumb { font-size: 12px; color: var(--ink4); margin-top: 4px; }
+  h1 { font-size: 24px; margin: 0 0 8px; }
+  h2 {
+    font-size: 13px; font-weight: 700; letter-spacing: 1.2px;
+    text-transform: uppercase; color: var(--teal);
+    margin: 40px 0 12px; padding-top: 8px;
+  }
+  h3 { font-size: 15px; margin: 24px 0 8px; color: var(--ink1); }
+  p, li { color: var(--ink2); font-size: 14px; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 13px; }
+  th, td { border-bottom: 0.5px solid var(--ink5); padding: 8px 6px; text-align: left; vertical-align: top; color: var(--ink2); }
+  th { color: var(--ink3); font-weight: 600; font-size: 12px; }
+  a { color: var(--teal); }
+  .updated { color: var(--ink4); font-size: 12px; margin-top: 64px; padding-top: 24px; border-top: 0.5px solid var(--ink5); }
+  .home-link { display: inline-block; margin-top: 24px; font-size: 13px; color: var(--ink3); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brand-row">
+    <a href="index.html" style="text-decoration: none;"><span class="brand">Lichen</span></a>
+    <div class="crumb">プライバシーポリシー</div>
+  </div>
+
+  <h1>プライバシーポリシー</h1>
+  <p>Lichen App (以下「本アプリ」) は、利用者のプライバシーを尊重し、本ポリシーに従って情報を取り扱います。本アプリを利用することにより、本ポリシーへの同意があったものとみなします。</p>
+
+  <h2>1. 事業者情報</h2>
+  <p>
+    アプリ名: Lichen<br>
+    運営者: Mano Tachihara<br>
+    お問い合わせ: <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4I7OWbrU6jHNYPw7H5AtCIFKvfTbTTXPltGpdKToBf_vw4w/viewform">お問い合わせフォーム</a>
+  </p>
+
+  <h2>2. 基本方針</h2>
+  <p>本アプリは「ユーザーの書き込み内容と閲覧履歴を自社サーバーに集約しない」設計を基本方針としています。利用者個人を識別する情報を、本アプリの運営者が直接受け取って蓄積することはありません。</p>
+
+  <h2>3. 取得する情報</h2>
+
+  <h3>3.1 端末内のみで管理される情報 (本アプリ運営者は受け取りません)</h3>
+  <p>以下の情報は利用者の端末内 (SwiftData / UserDefaults / Keychain) のみに保存され、本アプリの運営者を含む第三者には送信されません。</p>
+  <ul>
+    <li>閲覧したスレッド・板の履歴</li>
+    <li>書き込みの本文 (投稿後の自分のレス識別のため、端末内のみで保持)</li>
+    <li>お気に入りに登録したスレッド・板</li>
+    <li>NG ワード / NG 名前 / NG ID / NG スレタイトル のルール</li>
+    <li>書き込み下書き</li>
+    <li>追加したカスタムサイト</li>
+    <li>表示モード・テーマ・文字サイズ等の設定値</li>
+    <li>掲示板ごとの dat / BBSMENU キャッシュ</li>
+    <li>UPLIFT (5ch 公式有料プラン) のセッション Cookie (Keychain に暗号化保存)</li>
+  </ul>
+  <p>これらは、本アプリを削除する、または設定画面の「すべてのデータを削除」を実行することで、いつでも完全に削除できます。</p>
+
+  <h3>3.2 利用者の操作により外部に送信される情報</h3>
+  <p>以下の情報は、利用者の操作 (スレ閲覧・書き込み・ログイン等) に応じて、本アプリが該当する第三者のサーバーへリアルタイムに送信します。本アプリの運営者は中継するだけで保存しません。</p>
+  <table>
+    <thead><tr><th>送信先</th><th>送信される情報</th><th>送信のきっかけ</th></tr></thead>
+    <tbody>
+      <tr><td>各掲示板サーバー (5ch.net, shitaraba.net, 2ch.sc, open2ch.net, mmobbs.com 等)</td><td>掲示板の閲覧リクエスト (匿名)、書き込み内容 (本文・名前・メール欄)、UPLIFT/浪人 Cookie</td><td>板やスレを開いた時、書き込みボタンを押した時</td></tr>
+      <tr><td>UPLIFT (uplift.5ch.io)</td><td>UPLIFT ログイン時のメールアドレス・パスワード (HTTPS 通信)</td><td>UPLIFT ログイン操作を実行した時</td></tr>
+      <tr><td>Google AdMob</td><td>広告識別子 (IDFA、ATT 許可時のみ)、IP アドレス、デバイス種別、現在閲覧中の板名・スレッドタイトル</td><td>広告枠が表示される時</td></tr>
+    </tbody>
+  </table>
+  <p>これらの送信先における取扱いは、各事業者のプライバシーポリシーに従います。</p>
+
+  <h3>3.3 広告 SDK (Google AdMob) について</h3>
+  <p>本アプリは広告配信のために Google LLC が提供する AdMob を利用しています。</p>
+  <ul>
+    <li>App Tracking Transparency (ATT) で利用者が「許可」を選択した場合のみ、広告識別子 (IDFA) が AdMob に送信されます。「許可しない」を選択した場合、IDFA は送信されません。</li>
+    <li>関連性の高い広告を表示するため、現在閲覧中の <strong>板名およびスレッドタイトル</strong> を AdMob にリアルタイムで送信します。これらは掲示板上で誰でも閲覧できる公開情報であり、利用者個人を識別する情報ではありません。</li>
+    <li>利用者が書き込んだ本文や、過去の閲覧履歴は AdMob には送信しません。</li>
+    <li>AdMob のプライバシーポリシーは <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google プライバシーポリシー</a> を参照してください。</li>
+  </ul>
+
+  <h2>4. App Tracking Transparency (ATT) について</h2>
+  <p>iOS の仕組み上、IDFA を使ったパーソナライズ広告を表示するには、ATT ダイアログでの「許可」が必要です。本アプリは初回起動時ではなく、利用者がアプリの価値を体験した後にダイアログを表示します。許可・拒否はいつでも iOS の設定 → プライバシーとセキュリティ → トラッキング から変更できます。許可しない場合でも、本アプリのすべての機能は通常通り利用できます。</p>
+
+  <h2>5. UPLIFT (5ch 公式有料プラン) について</h2>
+  <p>UPLIFT は 5ch 運営 (Loki Technology, Inc.) が提供する有料プランです。本アプリは UPLIFT のログインフォームを中継してセッション Cookie を取得し、端末の Keychain に安全に保存します。</p>
+  <ul>
+    <li>本アプリの運営者は、利用者の UPLIFT メールアドレス・パスワードを保存・閲覧しません (HTTPS 通信で UPLIFT サーバーへ送信するだけです)。</li>
+    <li>UPLIFT の料金は 5ch 運営に直接支払われます。本アプリは UPLIFT 料金から収益を得ていません。</li>
+    <li>UPLIFT にログイン中は、本アプリ内で表示される 5ch 上の広告のみ非表示になります (他サイトの広告は引き続き表示されます)。</li>
+    <li>設定画面からログアウトすることで、Keychain 上のセッション Cookie はただちに削除されます。</li>
+  </ul>
+
+  <h2>6. データの利用目的</h2>
+  <ul>
+    <li>本アプリの基本機能 (掲示板閲覧・書き込み・お気に入り等) の提供</li>
+    <li>広告の表示 (AdMob を介した第三者広告)</li>
+    <li>不具合・障害の原因調査 (Apple 提供のクラッシュレポートのみ、利用者の同意がある場合)</li>
+  </ul>
+
+  <h2>7. 第三者提供</h2>
+  <p>本アプリは、上記 3.2 に記載された第三者 (各掲示板サーバー・UPLIFT・Google AdMob) 以外には、利用者の情報を提供しません。データブローカーや広告代理店等への販売・共有は一切行いません。</p>
+
+  <h2>8. 海外移転</h2>
+  <p>Google AdMob を経由する情報は、Google LLC (米国) が運営するサーバーで処理される場合があります。また、利用者がアクセスする各掲示板の運営者の所在地によっては、日本国外のサーバーに情報が送信される場合があります。</p>
+
+  <h2>9. 保管期間</h2>
+  <p>端末内に保存された情報は、利用者が本アプリを削除する、または設定画面の「すべてのデータを削除」を実行するまで保持されます。本アプリの運営者は、利用者個人を識別できる形では情報を保管しません。</p>
+
+  <h2>10. 利用者の選択肢 / 権利</h2>
+  <ul>
+    <li><strong>ATT の変更</strong>: iOS の設定からいつでも許可・不許可を切り替えられます。</li>
+    <li><strong>UPLIFT のログアウト</strong>: 本アプリの設定画面からセッション Cookie を削除できます。</li>
+    <li><strong>キャッシュの削除</strong>: 設定画面の「ストレージ」から dat / BBSMENU キャッシュを削除できます。</li>
+    <li><strong>NG ルールの編集</strong>: 設定画面から個別に編集・削除できます。</li>
+    <li><strong>全データの削除</strong>: 設定画面の「データ管理」から、本アプリ内のすべての情報を一括削除できます (アプリを再インストールしたのと同等の状態になります)。</li>
+  </ul>
+
+  <h2>11. 未成年の利用</h2>
+  <p>本アプリは 17 歳以上を対象としています。掲示板上のコンテンツには、年齢制限のある話題や粗野な表現が含まれる場合があります。未成年の利用者は、保護者の同意のもとで利用してください。</p>
+
+  <h2>12. 海外からの利用</h2>
+  <p>本アプリは日本国内向けに提供しています。日本国外から利用される場合、本ポリシーに加え、利用者の居住地の個人情報保護法令にも従ってください。EU / EEA / 英国の利用者には、Google AdMob の同意管理プラットフォーム (UMP) を通じた追加の同意確認が表示される場合があります。</p>
+
+  <h2>13. お問い合わせ</h2>
+  <p>本ポリシーまたは本アプリのプライバシーに関するお問い合わせは、<a href="https://docs.google.com/forms/d/e/1FAIpQLSd4I7OWbrU6jHNYPw7H5AtCIFKvfTbTTXPltGpdKToBf_vw4w/viewform">こちらのフォーム</a>からお願いいたします。</p>
+
+  <h2>14. 本ポリシーの改定</h2>
+  <p>本ポリシーは、法令の変更・新機能の追加・利用者からのご意見に応じて改定することがあります。重要な変更がある場合は、本アプリ内および本ページ上で告知します。</p>
+
+  <div class="updated">
+    最終更新日: 2026年5月16日<br>
+    初版公開日: 2026年5月16日
+  </div>
+
+  <a class="home-link" href="index.html">← Lichen トップへ戻る</a>
+
+</div>
+</body>
+</html>
