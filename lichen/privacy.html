@@ -13,6 +13,8 @@
     --ink4: #a8adb6;
     --ink5: #d4d8de;
     --teal: #1FA68A;
+    --indigo: #6B58C2;
+    --magenta: #C95584;
     --coral: #FF8557;
   }
   @media (prefers-color-scheme: dark) {
@@ -36,14 +38,19 @@
   .brand-row { margin-bottom: 32px; }
   .brand {
     font-size: 18px; font-weight: 700; letter-spacing: 1px;
-    background: linear-gradient(90deg, var(--teal), var(--coral));
+    background: linear-gradient(90deg, var(--teal), var(--indigo), var(--magenta), var(--coral));
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
   .crumb { font-size: 12px; color: var(--ink4); margin-top: 4px; }
-  h1 { font-size: 24px; margin: 0 0 8px; }
+  h1 {
+    font-size: 24px; margin: 0 0 8px;
+    background: linear-gradient(90deg, var(--teal), var(--indigo), var(--magenta), var(--coral));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    display: inline-block;
+  }
   h2 {
     font-size: 13px; font-weight: 700; letter-spacing: 1.2px;
-    text-transform: uppercase; color: var(--teal);
+    text-transform: uppercase; color: var(--ink1);
     margin: 40px 0 12px; padding-top: 8px;
   }
   h3 { font-size: 15px; margin: 24px 0 8px; color: var(--ink1); }
@@ -53,7 +60,7 @@
   table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 13px; }
   th, td { border-bottom: 0.5px solid var(--ink5); padding: 8px 6px; text-align: left; vertical-align: top; color: var(--ink2); }
   th { color: var(--ink3); font-weight: 600; font-size: 12px; }
-  a { color: var(--teal); }
+  a { color: var(--ink1); text-decoration: underline; }
   .updated { color: var(--ink4); font-size: 12px; margin-top: 64px; padding-top: 24px; border-top: 0.5px solid var(--ink5); }
   .home-link { display: inline-block; margin-top: 24px; font-size: 13px; color: var(--ink3); }
 </style>
@@ -72,7 +79,7 @@
   <h2>1. 事業者情報</h2>
   <p>
     アプリ名: Lichen<br>
-    運営者: Mano Tachihara<br>
+    運営者: Hamnism<br>
     お問い合わせ: <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4I7OWbrU6jHNYPw7H5AtCIFKvfTbTTXPltGpdKToBf_vw4w/viewform">お問い合わせフォーム</a>
   </p>
 

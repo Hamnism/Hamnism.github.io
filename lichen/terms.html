@@ -13,6 +13,8 @@
     --ink4: #a8adb6;
     --ink5: #d4d8de;
     --teal: #1FA68A;
+    --indigo: #6B58C2;
+    --magenta: #C95584;
     --coral: #FF8557;
   }
   @media (prefers-color-scheme: dark) {
@@ -36,20 +38,25 @@
   .brand-row { margin-bottom: 32px; }
   .brand {
     font-size: 18px; font-weight: 700; letter-spacing: 1px;
-    background: linear-gradient(90deg, var(--teal), var(--coral));
+    background: linear-gradient(90deg, var(--teal), var(--indigo), var(--magenta), var(--coral));
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
   .crumb { font-size: 12px; color: var(--ink4); margin-top: 4px; }
-  h1 { font-size: 24px; margin: 0 0 8px; }
+  h1 {
+    font-size: 24px; margin: 0 0 8px;
+    background: linear-gradient(90deg, var(--teal), var(--indigo), var(--magenta), var(--coral));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    display: inline-block;
+  }
   h2 {
     font-size: 13px; font-weight: 700; letter-spacing: 1.2px;
-    text-transform: uppercase; color: var(--teal);
+    text-transform: uppercase; color: var(--ink1);
     margin: 40px 0 12px; padding-top: 8px;
   }
   p, li { color: var(--ink2); font-size: 14px; }
   ul, ol { padding-left: 20px; }
   li { margin-bottom: 4px; }
-  a { color: var(--teal); }
+  a { color: var(--ink1); text-decoration: underline; }
   .updated { color: var(--ink4); font-size: 12px; margin-top: 64px; padding-top: 24px; border-top: 0.5px solid var(--ink5); }
   .home-link { display: inline-block; margin-top: 24px; font-size: 13px; color: var(--ink3); }
 </style>
@@ -63,10 +70,10 @@
   </div>
 
   <h1>利用規約</h1>
-  <p>この利用規約 (以下「本規約」) は、Mano Tachihara (以下「運営者」) が提供する iOS アプリ「Lichen」(以下「本アプリ」) の利用条件を定めるものです。本アプリを利用される場合、本規約に同意したものとみなします。</p>
+  <p>この利用規約 (以下「本規約」) は、Hamnism (以下「運営者」) が提供する iOS アプリ「Lichen」(以下「本アプリ」) の利用条件を定めるものです。本アプリを利用される場合、本規約に同意したものとみなします。</p>
 
   <h2>1. 本アプリの位置付け</h2>
-  <p>本アプリは 5ちゃんねる (5ch.net) ・したらば掲示板 (shitaraba.net) ・おーぷん 2ちゃんねる (open2ch.net) ・2ch.sc ・Next2ch (next2ch.net) ・MMOBBS (mmobbs.com) ・ぷにぷに電機 等の monazilla 互換掲示板を閲覧・投稿するための<strong>非公式クライアント</strong>です。本アプリは、それぞれの掲示板の運営者とは独立して開発・運営されています。</p>
+  <p>本アプリは 5ちゃんねる (5ch.net) ・したらば掲示板 (shitaraba.net) ・おーぷん 2ちゃんねる (open2ch.net) ・2ch.sc ・Next2ch (next2ch.net) ・MMOBBS (mmobbs.com) 等の monazilla 互換掲示板を閲覧・投稿するための<strong>非公式クライアント</strong>です。利用者が任意の BBSMENU URL を指定して新しい掲示板を追加することもできます。本アプリは、それぞれの掲示板の運営者とは独立して開発・運営されています。</p>
   <p>本アプリは、5ch 運営 (Loki Technology, Inc.) が 2023 年 7 月 11 日に公表した公式声明「全ての 5ch ブラウザは自身の広告 SDK を使用でき、収益を分配する必要はありません」に基づき、独立した広告 SDK を運用しています。</p>
 
   <h2>2. 対象年齢</h2>

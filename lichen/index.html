@@ -14,6 +14,8 @@
     --ink4: #a8adb6;
     --ink5: #d4d8de;
     --teal: #1FA68A;
+    --indigo: #6B58C2;
+    --magenta: #C95584;
     --coral: #FF8557;
   }
   @media (prefers-color-scheme: dark) {
@@ -44,7 +46,7 @@
     font-size: 36px;
     font-weight: 700;
     letter-spacing: 1.5px;
-    background: linear-gradient(90deg, var(--teal), var(--coral));
+    background: linear-gradient(90deg, var(--teal), var(--indigo), var(--magenta), var(--coral));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -67,7 +69,7 @@
   .lead { color: var(--ink1); font-size: 16px; line-height: 1.8; }
   ul { padding-left: 18px; color: var(--ink2); font-size: 14px; }
   li { margin-bottom: 6px; }
-  a { color: var(--teal); text-decoration: none; }
+  a { color: var(--ink1); text-decoration: underline; }
   a:hover { text-decoration: underline; }
   .links {
     display: flex;
@@ -85,7 +87,7 @@
     background: var(--bg);
   }
   .link-card:hover {
-    border-color: var(--teal);
+    border-color: var(--ink3);
     text-decoration: none;
   }
   .meta {
@@ -105,7 +107,7 @@
   <p class="tagline">上品な掲示板ブラウザ for iOS</p>
 
   <p class="lead">
-    Lichen は、5ch・したらば・おーぷん 2ch・2ch.sc・Next2ch・MMOBBS・ぷにぷに電機 などの monazilla 互換掲示板を、iPhone から快適に読めるアプリです。
+    Lichen は、5ch・したらば掲示板・おーぷん 2ch・2ch.sc・Next2ch・MMOBBS などの主要な monazilla 互換掲示板を、iPhone から快適に読めるアプリです。任意の BBSMENU URL を指定して新しい掲示板を追加することもできます。
   </p>
 
   <h2>特長</h2>
@@ -137,7 +139,7 @@
 
   <div class="meta">
     Lichen App<br>
-    運営: Mano Tachihara<br>
+    運営: Hamnism<br>
     © 2026 Lichen App
   </div>
 
