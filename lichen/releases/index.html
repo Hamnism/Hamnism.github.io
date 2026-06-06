@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>リリースノート — Lichen</title>
+<meta name="description" content="Lichen のバージョンごとの更新内容。">
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink1: #15171c;
+    --ink2: #41464f;
+    --ink3: #757b85;
+    --ink4: #a8adb6;
+    --ink5: #d4d8de;
+    --teal: #1FA68A;
+    --indigo: #6B58C2;
+    --magenta: #C95584;
+    --coral: #FF8557;
+    --grad: linear-gradient(135deg, #1FA68A 0%, #6B58C2 38%, #C95584 68%, #FF8557 100%);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f141a;
+      --ink1: #e8eaf0;
+      --ink2: #bfc4cc;
+      --ink3: #8a9099;
+      --ink4: #5e646d;
+      --ink5: #2a2f36;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--ink1);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", system-ui, sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 64px 24px 96px; }
+  .brand {
+    font-size: 34px; font-weight: 800; margin: 0 0 6px;
+    background: var(--grad);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    letter-spacing: -0.5px;
+  }
+  .tagline { font-size: 15px; color: var(--ink3); margin: 0 0 48px; }
+  p { color: var(--ink2); margin: 0 0 16px; font-size: 15px; }
+  a { color: var(--ink1); text-decoration: none; }
+  /* バージョンカード */
+  .versions { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+  .vcard {
+    display: block;
+    position: relative;
+    padding: 18px 20px 18px 22px;
+    border: 0.5px solid var(--ink5);
+    border-radius: 14px;
+    background: var(--bg);
+    overflow: hidden;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .vcard::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    background: var(--grad);
+  }
+  .vcard:hover { border-color: var(--ink3); transform: translateY(-1px); }
+  .vcard .vtitle { font-size: 19px; font-weight: 700; color: var(--ink1); margin: 0 0 4px; }
+  .vcard .vdesc { font-size: 13px; color: var(--ink3); margin: 0; }
+  .vcard .varrow { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: var(--ink4); font-size: 15px; }
+  .meta {
+    margin-top: 64px; padding-top: 24px;
+    border-top: 0.5px solid var(--ink5);
+    color: var(--ink4); font-size: 11px;
+  }
+  .meta a { color: var(--ink3); text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1 class="brand">Lichen</h1>
+  <p class="tagline">リリースノート</p>
+
+  <p>各バージョンの更新内容です。新しいものが上にきます。</p>
+
+  <div class="versions">
+    <a class="vcard" href="1.1.html">
+      <p class="vtitle">バージョン 1.1</p>
+      <p class="vdesc">返信ツリー表示・読み込み高速化・広告の画像表示 ほか</p>
+      <span class="varrow">→</span>
+    </a>
+  </div>
+
+  <div class="meta">
+    <a href="../">Lichen ホーム</a> ・
+    <a href="../terms.html">利用規約</a> ・
+    <a href="../privacy.html">プライバシーポリシー</a><br>
+    運営: Hamnism ・ © 2026 Lichen App
+  </div>
+
+</div>
+</body>
+</html>
