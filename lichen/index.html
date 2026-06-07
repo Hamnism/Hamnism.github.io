@@ -3,11 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lichen — 上品な掲示板ブラウザ</title>
-<meta name="description" content="Lichen は 5ch・したらば・おーぷん 2ch などの monazilla 互換掲示板を快適に閲覧できる掲示板ブラウザです。">
+<title>Lichen — 上質な掲示板ブラウザ</title>
+<meta name="description" content="Lichen は 5ch・したらば・おーぷん 2ch などの monazilla 互換掲示板を快適に閲覧できる、上質な掲示板ブラウザです。">
+<meta property="og:title" content="Lichen — 上質な掲示板ブラウザ">
+<meta property="og:description" content="5ch・したらば・おーぷん 2ch などを快適に。白基調の落ち着いたデザインと本格 NG フィルタ。">
+<meta property="og:type" content="website">
 <style>
   :root {
     --bg: #ffffff;
+    --bg2: #f7f8fa;
     --ink1: #15171c;
     --ink2: #41464f;
     --ink3: #757b85;
@@ -17,10 +21,12 @@
     --indigo: #6B58C2;
     --magenta: #C95584;
     --coral: #FF8557;
+    --grad: linear-gradient(135deg, #1FA68A 0%, #6B58C2 38%, #C95584 68%, #FF8557 100%);
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --bg: #0f141a;
+      --bg2: #161c24;
       --ink1: #e8eaf0;
       --ink2: #bfc4cc;
       --ink3: #8a9099;
@@ -37,88 +43,125 @@
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 64px 24px 96px;
+  .wrap { max-width: 760px; margin: 0 auto; padding: 64px 24px 96px; }
+
+  /* ヒーロー: グラデの細い天面ライン + グラデのワードマーク */
+  .hero { position: relative; }
+  .hero::before {
+    content: ""; display: block; width: 56px; height: 5px; border-radius: 999px;
+    background: var(--grad); margin-bottom: 26px;
   }
   .brand {
-    font-size: 34px;
-    font-weight: 700;
-    color: var(--ink1);
-    margin: 0 0 8px;
+    font-size: 46px; font-weight: 800; margin: 0 0 8px; letter-spacing: -1px;
+    background: var(--grad);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    line-height: 1.1;
   }
-  .tagline {
-    font-size: 15px;
-    color: var(--ink3);
-    margin: 0 0 48px;
+  .tagline { font-size: 16px; color: var(--ink3); margin: 0 0 28px; }
+  .lead { color: var(--ink1); font-size: 16px; line-height: 1.9; margin: 0 0 32px; }
+
+  /* 更新情報カード (動線を目立たせる) */
+  .update-card {
+    display: flex; align-items: center; gap: 16px;
+    position: relative; overflow: hidden;
+    padding: 18px 20px 18px 22px;
+    border: 0.5px solid var(--ink5); border-radius: 16px;
+    background: var(--bg2);
+    text-decoration: none;
+    transition: border-color .15s ease, transform .15s ease;
   }
-  /* タイポ階層: 見出し h2 は本文より大きく。uppercase / letter-spacing は不使用 (terms/privacy と統一)。 */
+  .update-card::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--grad);
+  }
+  .update-card:hover { border-color: var(--ink3); transform: translateY(-1px); }
+  .ver-chip {
+    flex: none; font-size: 13px; font-weight: 800; color: #fff;
+    padding: 5px 13px; border-radius: 999px; background: var(--grad); letter-spacing: 0.3px;
+  }
+  .update-body { flex: 1; min-width: 0; }
+  .update-title { font-size: 14px; font-weight: 700; color: var(--ink1); margin: 0 0 2px; }
+  .update-desc { font-size: 12.5px; color: var(--ink3); margin: 0; }
+  .update-arrow { flex: none; color: var(--ink4); font-size: 16px; }
+
+  /* 見出し */
   h2 {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--ink1);
-    margin: 48px 0 12px;
+    font-size: 13px; font-weight: 700; color: var(--ink3);
+    margin: 56px 0 16px; letter-spacing: 0.4px;
   }
-  p { color: var(--ink2); margin: 0 0 16px; font-size: 15px; }
-  .lead { color: var(--ink1); font-size: 16px; line-height: 1.85; }
-  ul { padding-left: 18px; color: var(--ink2); font-size: 15px; }
-  li { margin-bottom: 6px; }
-  a { color: var(--ink1); text-decoration: underline; }
-  a:hover { text-decoration: underline; }
-  .links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 16px;
-  }
-  .link-card {
-    display: inline-block;
-    padding: 10px 16px;
-    border: 0.5px solid var(--ink5);
-    border-radius: 10px;
-    font-size: 13px;
-    color: var(--ink1);
+
+  /* 特長グリッド */
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .features { grid-template-columns: 1fr; } }
+  .feat {
+    padding: 16px 16px; border: 0.5px solid var(--ink5); border-radius: 14px;
     background: var(--bg);
   }
-  .link-card:hover {
-    border-color: var(--ink3);
-    text-decoration: none;
+  .feat .ft { font-size: 14px; font-weight: 700; color: var(--ink1); margin: 0 0 4px; }
+  .feat .fd { font-size: 12.5px; color: var(--ink3); margin: 0; line-height: 1.7; }
+  .feat .dot {
+    display: inline-block; width: 8px; height: 8px; border-radius: 3px;
+    background: var(--grad); margin-right: 8px; vertical-align: middle;
   }
+
+  /* ドキュメントカード */
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .link-card {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 16px; border: 0.5px solid var(--ink5); border-radius: 12px;
+    font-size: 13px; color: var(--ink1); background: var(--bg); text-decoration: none;
+    transition: border-color .15s ease;
+  }
+  .link-card:hover { border-color: var(--ink3); }
+  .link-card.primary { border: 0; color: #fff; background: var(--grad); font-weight: 700; }
+
+  p { color: var(--ink2); margin: 0 0 16px; font-size: 15px; }
+  a { color: var(--ink1); }
+
   .meta {
-    margin-top: 64px;
-    padding-top: 24px;
+    margin-top: 72px; padding-top: 24px;
     border-top: 0.5px solid var(--ink5);
-    color: var(--ink4);
-    font-size: 11px;
+    color: var(--ink4); font-size: 11px;
   }
-  .meta a { color: var(--ink3); }
+  .meta a { color: var(--ink3); text-decoration: underline; }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <h1 class="brand">Lichen</h1>
-  <p class="tagline">上品な掲示板ブラウザ</p>
+  <div class="hero">
+    <h1 class="brand">Lichen</h1>
+    <p class="tagline">上質な掲示板ブラウザ</p>
+  </div>
 
   <p class="lead">
     Lichen は、5ch・したらば掲示板・おーぷん 2ch・2ch.sc・Next2ch・MMOBBS などの主要な monazilla 互換掲示板を、iPhone / iPad から快適に読めるアプリです。任意の BBSMENU URL を指定して新しい掲示板を追加することもできます。
   </p>
 
+  <a class="update-card" href="releases/">
+    <span class="ver-chip">v1.2</span>
+    <span class="update-body">
+      <span class="update-title">最新アップデート</span>
+      <span class="update-desc">返信ツリー表示・読み込み高速化・広告の画像表示 ほか</span>
+    </span>
+    <span class="update-arrow">→</span>
+  </a>
+
   <h2>特長</h2>
-  <ul>
-    <li>白基調の落ち着いたデザイン (ダークモード対応)</li>
-    <li>Live モード / Classic モードの 2 つの表示</li>
-    <li>板単位でスレを保存できるオフラインキャッシュ</li>
-    <li>NG ワード / NG 名前 / NG ID / NG スレタイトル の本格 NG フィルタ</li>
-    <li>スレ読み上げ機能 (画面オフ抑止つき)</li>
-    <li>カメラ / 写真 / 手書き / 音声入力からの投稿</li>
-    <li>UPLIFT (5ch 公式有料プラン) ログインで 5ch の広告を非表示</li>
-    <li>閲覧履歴・投稿履歴・お気に入りはすべて端末内で完結 (サーバー送信なし)</li>
-  </ul>
+  <div class="features">
+    <div class="feat"><p class="ft"><span class="dot"></span>上質なデザイン</p><p class="fd">白基調の落ち着いた UI。ダークモードにも対応。</p></div>
+    <div class="feat"><p class="ft"><span class="dot"></span>2 つの表示モード</p><p class="fd">Live モード / Classic モードを切り替えて閲覧。</p></div>
+    <div class="feat"><p class="ft"><span class="dot"></span>オフラインキャッシュ</p><p class="fd">一度読んだスレは圏外でも読み返せる。</p></div>
+    <div class="feat"><p class="ft"><span class="dot"></span>本格 NG フィルタ</p><p class="fd">ワード / 名前 / ID / スレタイトルの 4 系統。</p></div>
+    <div class="feat"><p class="ft"><span class="dot"></span>スレ読み上げ</p><p class="fd">画面オフ抑止つきで“ながら”閲覧。</p></div>
+    <div class="feat"><p class="ft"><span class="dot"></span>多彩な投稿手段</p><p class="fd">カメラ / 写真 / 手書き / 音声入力に対応。</p></div>
+    <div class="feat"><p class="ft"><span class="dot"></span>UPLIFT 連携</p><p class="fd">5ch 公式有料プランのログインで 5ch の広告を非表示。</p></div>
+    <div class="feat"><p class="ft"><span class="dot"></span>プライバシー重視</p><p class="fd">履歴・投稿・お気に入りは端末内で完結。</p></div>
+  </div>
 
   <h2>ドキュメント</h2>
   <div class="links">
+    <a class="link-card primary" href="releases/">リリースノート →</a>
     <a class="link-card" href="terms.html">利用規約</a>
     <a class="link-card" href="privacy.html">プライバシーポリシー</a>
   </div>

@@ -16,6 +16,7 @@
     --indigo: #6B58C2;
     --magenta: #C95584;
     --coral: #FF8557;
+    --grad: linear-gradient(135deg, #1FA68A 0%, #6B58C2 38%, #C95584 68%, #FF8557 100%);
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -37,10 +38,10 @@
   }
   .wrap { max-width: 720px; margin: 0 auto; padding: 48px 24px 96px; }
   .brand-row { margin-bottom: 32px; }
-  .brand { font-size: 17px; font-weight: 700; color: var(--ink1); }
+  .brand { font-size: 17px; font-weight: 800; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
   .crumb { font-size: 13px; color: var(--ink4); margin-top: 4px; }
   /* タイポ階層: h1 > h2 > h3 > 本文。日本語が間延びする uppercase / letter-spacing は不使用。 */
-  h1 { font-size: 26px; font-weight: 700; color: var(--ink1); margin: 0 0 12px; }
+  h1 { font-size: 26px; font-weight: 800; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; margin: 0 0 12px; letter-spacing: -0.3px; }
   h2 { font-size: 20px; font-weight: 700; color: var(--ink1); margin: 40px 0 12px; }
   h3 { font-size: 17px; font-weight: 600; color: var(--ink1); margin: 28px 0 8px; }
   p, li { color: var(--ink2); font-size: 15px; }
