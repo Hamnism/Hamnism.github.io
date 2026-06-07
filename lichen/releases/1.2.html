@@ -18,6 +18,7 @@
     --magenta: #C95584;
     --coral: #FF8557;
     --grad: linear-gradient(135deg, #1FA68A 0%, #6B58C2 38%, #C95584 68%, #FF8557 100%);
+    --grad-text: linear-gradient(90deg, #1FA68A 0%, #6B58C2 36%, #C95584 68%, #FF8557 100%);
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -42,13 +43,13 @@
   .crumb { font-size: 13px; color: var(--ink3); margin: 0 0 28px; }
   .crumb a {
     color: transparent; text-decoration: none; font-weight: 700;
-    background: var(--grad);
+    background: var(--grad-text);
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   }
   .crumb .sep { color: var(--ink4); }
   h1 {
     font-size: 30px; font-weight: 800; margin: 0 0 6px; letter-spacing: -0.5px;
-    background: var(--grad);
+    background: var(--grad-text);
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
   }
   .vsub { font-size: 14px; color: var(--ink3); margin: 0 0 40px; }

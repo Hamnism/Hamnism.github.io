@@ -18,6 +18,7 @@
     --magenta: #C95584;
     --coral: #FF8557;
     --grad: linear-gradient(135deg, #1FA68A 0%, #6B58C2 38%, #C95584 68%, #FF8557 100%);
+    --grad-text: linear-gradient(90deg, #1FA68A 0%, #6B58C2 36%, #C95584 68%, #FF8557 100%);
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -41,7 +42,7 @@
   .wrap { max-width: 720px; margin: 0 auto; padding: 64px 24px 96px; }
   .brand {
     font-size: 34px; font-weight: 800; margin: 0 0 6px;
-    background: var(--grad);
+    background: var(--grad-text);
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent; color: transparent;
     letter-spacing: -0.5px;
