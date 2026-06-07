@@ -50,6 +50,8 @@
   /* ヒーロー: タイポグラフィのみで表現 (装飾バーは置かない) */
   .hero { position: relative; padding-top: 8px; }
   .brand {
+    display: inline-block; /* 箱を文字幅に縮め、グラデを Lichen の幅ぴったりに収める
+                              (block のままだと全幅に伸びて左の teal〜青しか文字に乗らない) */
     font-size: 48px; font-weight: 800; margin: 0 0 8px; letter-spacing: -1px;
     background: var(--grad-text);
     -webkit-background-clip: text; background-clip: text;
