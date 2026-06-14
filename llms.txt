@@ -1,0 +1,47 @@
+# Lichen
+
+> iPhone / iPad 向けの上質な掲示板ブラウザ（専ブラ）。5ch（5ch.io）・したらば・おーぷん2ch などの掲示板に対応し、すべての機能を無料で利用できる。iOS 26 以上対応。提供: Hamnism。
+
+Lichen は、リキッドグラスの上質なデザインと、Apple Intelligence による端末内（オンデバイス）スレ要約を搭載した iOS 専用の掲示板ブラウザです。現行の 5ch に対応し、継続的にアップデートしています。本格的な NG フィルタ、オフラインキャッシュ、スレ読み上げ、マルチタブなどを備え、すべての機能が無料です。他アプリとの比較ではなく、Lichen 自身の品質で「とにかく速く、静かで、上質な専ブラ」を目指しています。
+
+## 3つの特徴
+1. 洗練されたデザイン言語 — 白基調・リキッドグラス（iOS 26）の上質な UI、ダークモード対応
+2. 完全無料で多彩な掲示板に対応 — 主要な monazilla 互換掲示板を 1 つのアプリで
+3. Apple Intelligence など最新機能 — 端末内でのスレ要約をはじめ、iOS 最新世代の体験
+
+## 対応掲示板
+5ch（5ch.io）/ したらば / おーぷん2ch / 2ch.sc / Next2ch / MMOBBS / ぷにぷに板 / 任意の BBSMENU URL を追加可能
+
+## 主な機能
+- リキッドグラス UI（iOS 26）/ ダークモード対応
+- Apple Intelligence による端末内スレ要約（返信ツリー・ID 単位、タップで実行、クラウド送信なし）
+- マルチタブ（複数スレ・板を同時に開き、状態を再起動後も復元）
+- Live / Classic の 2 つの表示モード
+- ワード / 名前 / ID / スレタイ / 全体の 5 系統 NG フィルタ（正規表現対応）
+- スレ内検索 / 返信ツリー表示 / 画像ギャラリー・フルスクリーンビューア
+- オフラインキャッシュ（一度読んだスレは圏外でも読み返せる）
+- スレ読み上げ（画面オフ抑止つき）
+- カメラ / 写真 / 手書き / 音声入力での投稿
+- お気に入り・閲覧履歴 / 下書き自動保存 / セーフモード（画像モザイク）
+- UPLIFT 連携（5ch 公式有料プランの認証書き込み・広告非表示）
+- プライバシー重視（閲覧履歴・投稿・お気に入りは端末内で完結）
+
+## よくある質問
+- 対応掲示板: 5ch（5ch.io）・したらば・おーぷん2ch・2ch.sc・Next2ch・MMOBBS・ぷにぷに板、任意の BBSMENU URL
+- 料金: すべての機能が無料
+- 現行 5ch（5ch.io）: 閲覧・書き込みに対応、継続的にアップデート
+- 対応 OS: iOS 26.0 / iPadOS 26.0 以上（iPhone・iPad）
+- Apple Intelligence: 返信ツリーや ID 単位の発言を端末内で要約（対応端末・iOS 26 以上）
+
+## 料金
+すべての機能が無料。
+
+## 動作要件
+iOS 26.0 / iPadOS 26.0 以上 — iPhone・iPad 対応
+
+## リンク
+- 公式サイト: https://hamnism.github.io/lichen/
+- App Store: https://apps.apple.com/jp/app/lichen/id6771805838
+- リリースノート: https://hamnism.github.io/lichen/releases/
+- 利用規約: https://hamnism.github.io/lichen/terms.html
+- プライバシーポリシー: https://hamnism.github.io/lichen/privacy.html

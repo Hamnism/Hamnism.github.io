@@ -1,0 +1,38 @@
+# https://hamnism.github.io/ — robots
+# 検索エンジン・AIクローラともに歓迎（全公開コンテンツを許可）
+
+User-agent: *
+Allow: /
+
+# AIクローラを明示的に許可（GEO / AI検索対策）
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://hamnism.github.io/sitemap.xml
