@@ -197,9 +197,11 @@
   /* ================= HERO ================= */
   .hero{
     position: relative;
-    height: 100vh; min-height: 720px;
+    min-height: 100vh;
     overflow: hidden;
-    display: flex; align-items: center; justify-content: center;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 150px 44px 56px;
     cursor: crosshair;
   }
 
@@ -345,7 +347,8 @@
 
   /* 左下コピー / 右下タグピル */
   .hero-foot{
-    position: absolute; left: 44px; right: 44px; bottom: 36px;
+    width: 100%; max-width: 1480px;
+    margin-top: 84px;
     display: flex; align-items: flex-end; justify-content: space-between;
     gap: 40px;
     z-index: 2;
@@ -583,8 +586,8 @@
     nav{ padding: 16px 20px; }
     .nav-links{ display: none; }
     .sec, .sec.flip{ grid-template-columns: 1fr; padding: 84px 24px; gap: 40px; min-height: unset; }
-    .hero{ cursor: default; height: auto; min-height: 100vh; flex-direction: column; padding: 130px 0 34px; }
-    .hero-foot{ position: static; margin-top: 48px; padding: 0 20px; flex-direction: column; align-items: flex-start; gap: 16px; left: auto; right: auto; bottom: auto; }
+    .hero{ cursor: default; padding: 120px 20px 40px; }
+    .hero-foot{ margin-top: 52px; flex-direction: column; align-items: flex-start; gap: 16px; }
     .whisper{ grid-template-columns: 1fr; }
     .shots-head{ padding: 0 24px; }
     .shots{ padding: 10px 24px 26px; }
