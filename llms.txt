@@ -44,8 +44,8 @@ Lichen は、リキッドグラスの上質なデザインと、Apple Intelligen
 iOS 26.0 / iPadOS 26.0 以上 — iPhone・iPad 対応
 
 ## リンク
-- 公式サイト: https://hamnism.github.io/lichen/
+- 公式サイト: https://hamnism.com/lichen/
 - App Store: https://apps.apple.com/jp/app/lichen/id6771805838
-- リリースノート: https://hamnism.github.io/lichen/releases/
-- 利用規約: https://hamnism.github.io/lichen/terms.html
-- プライバシーポリシー: https://hamnism.github.io/lichen/privacy.html
+- リリースノート: https://hamnism.com/lichen/releases/
+- 利用規約: https://hamnism.com/lichen/terms.html
+- プライバシーポリシー: https://hamnism.com/lichen/privacy.html

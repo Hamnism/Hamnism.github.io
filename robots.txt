@@ -1,4 +1,4 @@
-# https://hamnism.github.io/ — robots
+# https://hamnism.com/ — robots
 # 検索エンジン・AIクローラともに歓迎（全公開コンテンツを許可）
 
 User-agent: *
@@ -35,4 +35,4 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-Sitemap: https://hamnism.github.io/sitemap.xml
+Sitemap: https://hamnism.com/sitemap.xml
