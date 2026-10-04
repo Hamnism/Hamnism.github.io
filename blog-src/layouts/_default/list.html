@@ -5,7 +5,7 @@
 </header>
 {{- if eq .Section "guide" }}
   {{- $guide := .RegularPages -}}
-  {{- range $s := slice (dict "n" 1 "label" "Step 1　まずはこれだけ") (dict "n" 2 "label" "Step 2　慣れてきたら") (dict "n" 3 "label" "Step 3　こだわりたい人へ") }}
+  {{- range $s := slice (dict "n" 1 "label" "Step1. 基本機能について") (dict "n" 2 "label" "Step2. 便利な機能") (dict "n" 3 "label" "Step3. Lichenだけの機能") }}
   {{- $pages := sort (where $guide "Params.step" $s.n) "Params.id" }}
   <h2 class="steptitle" id="step{{ $s.n }}">{{ $s.label }}</h2>
   {{- if $pages }}

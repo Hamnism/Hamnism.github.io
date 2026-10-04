@@ -31,15 +31,14 @@ img { max-width: 100%; height: auto; display: block; }
 a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--ink1); outline-offset: 3px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-/* 2 カラム */
-.layout { display: grid; grid-template-columns: var(--side) minmax(0, 1fr); min-height: 100vh; }
+/* 2 カラム。もくじ + 本文をひとかたまりで画面の中央に置く */
+.layout { display: grid; grid-template-columns: var(--side) minmax(0, 1fr); min-height: 100vh; max-width: 70rem; margin-inline: auto; }
 .side {
   border-right: 0.5px solid var(--line); padding: 32px 24px 36px; min-width: 0;
   position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto;
 }
-/* 本文はもくじの右の余白の中央に置く */
-.main { min-width: 0; padding: 36px clamp(20px, 5vw, 64px) 0; }
-.main > * { max-width: var(--measure); margin-inline: auto; }
+.main { min-width: 0; padding: 36px clamp(20px, 4vw, 56px) 0; }
+.main > * { max-width: var(--measure); }
 .topbar { display: none; align-items: center; justify-content: space-between; padding: 12px 18px; border-bottom: 0.5px solid var(--line); position: sticky; top: 0; background: var(--bg); z-index: 5; }
 .burger { width: 42px; height: 42px; border: 0.5px solid var(--line); border-radius: 10px; background: transparent; color: var(--ink1); display: grid; place-items: center; cursor: pointer; padding: 0; }
 .burger span, .burger span::before, .burger span::after { display: block; width: 18px; height: 1.5px; background: currentColor; border-radius: 2px; content: ""; }
@@ -95,18 +94,18 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 
 /* 一覧 */
 .pagehead { margin-block-end: 30px; }
-.pagehead h1 { font-size: 24px; line-height: 1.5; margin: 0 0 4px; }
+.pagehead h1 { font-size: clamp(24px, 3.2vw, 34px); line-height: 1.4; margin: 0 0 4px; }
 .pagehead p { margin: 0; color: var(--ink3); font-size: 14px; }
 .post { display: grid; gap: 12px; padding-bottom: 38px; margin-bottom: 38px; border-bottom: 0.5px solid var(--line); }
 .post:last-of-type { border-bottom: 0; margin-bottom: 8px; }
 .main > .post { margin-bottom: 38px; }
 .main > .post:last-of-type { margin-bottom: 8px; }
-.cat { font-size: 12px; color: var(--ink3); letter-spacing: 0.06em; }
-.post h2 { font-size: clamp(19px, 2.4vw, 24px); line-height: 1.55; font-weight: 700; margin: 0; word-break: auto-phrase; }
+.cat { font-size: 11px; color: var(--ink3); letter-spacing: 0.1em; }
+.post h2 { font-size: clamp(22px, 3vw, 32px); line-height: 1.45; letter-spacing: 0.01em; font-weight: 700; margin: 0; word-break: auto-phrase; }
 .post h2 a { text-decoration: none; }
 .post p { margin: 0; color: var(--ink2); max-width: var(--measure); font-size: 15px; }
-.meta { font-size: 12px; color: var(--ink3); font-variant-numeric: tabular-nums; }
-.steptitle { font-size: 16px; font-weight: 700; margin-block: 34px 6px; padding-top: 22px; border-top: 0.5px solid var(--line); }
+.meta { font-size: 11px; letter-spacing: 0.04em; color: var(--ink3); font-variant-numeric: tabular-nums; }
+.steptitle { font-size: 20px; font-weight: 700; margin-block: 34px 6px; padding-top: 22px; border-top: 0.5px solid var(--line); }
 .rows { list-style: none; margin: 0; padding: 0; }
 .rows li { border-top: 0.5px solid var(--line); }
 .rows li:first-child { border-top: 0; }
@@ -120,10 +119,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 
 /* 記事 */
 .art { padding-bottom: 40px; }
-.art h1 { font-size: clamp(22px, 3vw, 30px); line-height: 1.5; margin: 8px 0 8px; font-weight: 700; word-break: auto-phrase; }
+.art h1 { font-size: clamp(26px, 3.8vw, 40px); line-height: 1.4; letter-spacing: 0.01em; margin: 10px 0 12px; font-weight: 700; word-break: auto-phrase; }
 .art .cover { margin-block: 24px; }
-.body h2 { font-size: 20px; line-height: 1.6; margin: 42px 0 12px; padding-top: 22px; border-top: 0.5px solid var(--line); font-weight: 700; scroll-margin-top: 72px; }
-.body h3 { font-size: 17px; line-height: 1.6; margin: 30px 0 8px; font-weight: 700; }
+.body h2 { font-size: clamp(21px, 2.4vw, 26px); line-height: 1.5; margin: 52px 0 14px; padding-top: 22px; border-top: 0.5px solid var(--line); font-weight: 700; scroll-margin-top: 72px; }
+.body h3 { font-size: 19px; line-height: 1.6; margin: 30px 0 8px; font-weight: 700; }
 .body p { margin: 0 0 1.4em; }
 .body ul, .body ol { margin: 0 0 1.4em; padding-left: 1.4em; }
 .body li { margin-bottom: 0.3em; }
