@@ -1,0 +1,9 @@
+{{- /* 記事の表紙。front matter の cover (記事フォルダ内の画像ファイル名) があれば 16:9 に整えて出す。
+       無ければ何も出さない (文字だけの記事になる)。引数: dict "page" . "link" true/false "eager" true/false */ -}}
+{{- $p := .page -}}
+{{- with $p.Params.cover }}{{ with $p.Resources.GetMatch . }}
+{{- $s := .Fill "800x450 Center q82" -}}{{- $l := .Fill "1600x900 Center q82" -}}
+{{- if $.link }}<a class="cover" href="{{ $p.RelPermalink }}" aria-label="{{ $p.Title }}">{{ else }}<div class="cover">{{ end -}}
+<img src="{{ $s.RelPermalink }}" srcset="{{ $s.RelPermalink }} 800w, {{ $l.RelPermalink }} 1600w" sizes="(max-width: 820px) 100vw, 640px" width="1600" height="900" alt="" {{ if $.eager }}fetchpriority="high"{{ else }}loading="lazy"{{ end }}>
+{{- if $.link }}</a>{{ else }}</div>{{ end -}}
+{{- end }}{{ end -}}

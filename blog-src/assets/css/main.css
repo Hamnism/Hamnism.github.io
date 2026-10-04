@@ -1,0 +1,145 @@
+/* Lichen ブログ: 左に「もくじ」(開閉できる記事の索引)、右に本文。
+   色は墨の濃淡と髪の毛線だけ。狭い幅ではもくじをハンバーガーに畳む。 */
+:root {
+  --bg: #ffffff;
+  --ink1: #15171c;
+  --ink2: #474c55;
+  --ink3: #7a808a;
+  --line: #e4e6ea;
+  --tone: #f1f2f4;
+  --tone2: #e2e4e8;
+  --font-word: "Futura", "Jost", "Avenir Next", sans-serif;
+  --font-body: "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif;
+  --measure: 40rem;
+  --side: 272px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101317; --ink1: #eceef2; --ink2: #b9bec7; --ink3: #858b95;
+    --line: #272b31; --tone: #191d22; --tone2: #2a2f36; color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink1);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+img { max-width: 100%; height: auto; display: block; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--ink1); outline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* 2 カラム */
+.layout { display: grid; grid-template-columns: var(--side) minmax(0, 1fr); min-height: 100vh; }
+.side {
+  border-right: 0.5px solid var(--line); padding: 32px 24px 36px; min-width: 0;
+  position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto;
+}
+.main { min-width: 0; padding: 36px clamp(20px, 5vw, 64px) 0; max-width: 60rem; }
+.topbar { display: none; align-items: center; justify-content: space-between; padding: 12px 18px; border-bottom: 0.5px solid var(--line); position: sticky; top: 0; background: var(--bg); z-index: 5; }
+.burger { width: 42px; height: 42px; border: 0.5px solid var(--line); border-radius: 10px; background: transparent; color: var(--ink1); display: grid; place-items: center; cursor: pointer; padding: 0; }
+.burger span, .burger span::before, .burger span::after { display: block; width: 18px; height: 1.5px; background: currentColor; border-radius: 2px; content: ""; }
+.burger span { position: relative; }
+.burger span::before { position: absolute; top: -6px; }
+.burger span::after { position: absolute; top: 6px; }
+
+@media (max-width: 820px) {
+  .layout { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+  .topbar { display: flex; }
+  .side { display: none; position: static; height: auto; border-right: 0; border-bottom: 0.5px solid var(--line); padding: 14px 18px 22px; }
+  .side.open { display: block; }
+  .side .brand { display: none; }
+  .main { padding-top: 26px; }
+}
+
+/* ブランド (ワードマークは単色 PNG をマスクにして文字色で塗る → ダークでも追従) */
+.brand { display: block; text-decoration: none; margin-bottom: 26px; }
+.word {
+  display: block; width: 104px; aspect-ratio: 933 / 246; background: var(--ink1);
+  -webkit-mask: url("../wordmark.png") left center / contain no-repeat;
+  mask: url("../wordmark.png") left center / contain no-repeat;
+}
+.topbar .word { width: 88px; }
+.tag { font-size: 12px; color: var(--ink3); line-height: 1.7; margin-top: 10px; display: block; }
+
+/* もくじ (アコーディオン) */
+.idx { font-size: 14px; line-height: 1.6; }
+.idx > a, .idx summary {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 8px;
+  padding-block: 10px; border-top: 0.5px solid var(--line);
+  text-decoration: none; color: var(--ink1); cursor: pointer; list-style: none;
+}
+.idx > a.cur { font-weight: 500; }
+.idx summary::-webkit-details-marker { display: none; }
+.idx summary::after { content: "+"; color: var(--ink3); font-family: var(--font-word); font-size: 15px; }
+.idx details[open] > summary::after { content: "–"; }
+.idx .n { color: var(--ink3); font-size: 12px; font-variant-numeric: tabular-nums; margin-left: 6px; }
+.idx ul { list-style: none; margin: 0 0 10px; padding: 0; }
+.idx li > a { display: block; padding: 5px 0 5px 12px; font-size: 13px; color: var(--ink2); text-decoration: none; border-left: 0.5px solid var(--line); }
+.idx li > a:hover { color: var(--ink1); }
+.idx li > a.cur { color: var(--ink1); font-weight: 500; border-left-color: var(--ink1); }
+.idx .empty { font-size: 12px; color: var(--ink3); padding: 4px 0 4px 12px; }
+/* 読んでいる記事の見出し (Hugo の TableOfContents) */
+.idx #TableOfContents ol { list-style: none; margin: 2px 0 6px; padding: 0 0 0 24px; font-size: 12px; line-height: 1.9; }
+.idx #TableOfContents a { color: var(--ink3); text-decoration: none; }
+.idx #TableOfContents a:hover { color: var(--ink1); }
+.idx .store { margin-top: 18px; border: 0.5px solid var(--ink3); border-radius: 999px; padding: 6px 14px; display: inline-block; font-size: 13px; text-decoration: none; }
+
+/* 表紙画像 (16:9) */
+.cover { display: block; border-radius: 10px; overflow: hidden; background: var(--tone); aspect-ratio: 16 / 9; }
+.cover img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 一覧 */
+.pagehead { margin-bottom: 30px; }
+.pagehead h1 { font-size: 24px; line-height: 1.5; margin: 0 0 4px; }
+.pagehead p { margin: 0; color: var(--ink3); font-size: 14px; }
+.post { display: grid; gap: 12px; padding-bottom: 38px; margin-bottom: 38px; border-bottom: 0.5px solid var(--line); }
+.post:last-of-type { border-bottom: 0; margin-bottom: 8px; }
+.cat { font-size: 12px; color: var(--ink3); letter-spacing: 0.06em; }
+.post h2 { font-size: clamp(19px, 2.4vw, 24px); line-height: 1.55; font-weight: 700; margin: 0; word-break: auto-phrase; }
+.post h2 a { text-decoration: none; }
+.post p { margin: 0; color: var(--ink2); max-width: var(--measure); font-size: 15px; }
+.meta { font-size: 12px; color: var(--ink3); font-variant-numeric: tabular-nums; }
+.steptitle { font-size: 16px; font-weight: 700; margin: 34px 0 6px; padding-top: 22px; border-top: 0.5px solid var(--line); }
+.rows { list-style: none; margin: 0; padding: 0; }
+.rows li { border-top: 0.5px solid var(--line); }
+.rows li:first-child { border-top: 0; }
+.rows a { display: block; padding: 14px 0; text-decoration: none; }
+.rows b { display: block; font-weight: 500; line-height: 1.6; }
+.rows span { display: block; font-size: 13px; color: var(--ink3); line-height: 1.7; margin-top: 2px; }
+.pager { display: flex; justify-content: space-between; gap: 16px; font-size: 14px; padding-block: 8px 28px; }
+.ft { border-top: 0.5px solid var(--line); padding-block: 20px 36px; margin-top: 10px; display: flex; gap: 14px; flex-wrap: wrap; justify-content: space-between; font-size: 12px; color: var(--ink3); }
+.ft a { text-decoration: none; margin-left: 14px; }
+.ft a:first-child { margin-left: 0; }
+
+/* 記事 */
+.art { max-width: var(--measure); padding-bottom: 40px; }
+.art h1 { font-size: clamp(22px, 3vw, 30px); line-height: 1.5; margin: 8px 0 8px; font-weight: 700; word-break: auto-phrase; }
+.art .cover { margin-block: 24px; }
+.body h2 { font-size: 20px; line-height: 1.6; margin: 42px 0 12px; padding-top: 22px; border-top: 0.5px solid var(--line); font-weight: 700; scroll-margin-top: 72px; }
+.body h3 { font-size: 17px; line-height: 1.6; margin: 30px 0 8px; font-weight: 700; }
+.body p { margin: 0 0 1.4em; }
+.body ul, .body ol { margin: 0 0 1.4em; padding-left: 1.4em; }
+.body li { margin-bottom: 0.3em; }
+.body a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 0.5px; }
+.body img { border-radius: 10px; margin-inline: auto; }
+.body figure { margin: 30px 0; }
+.body figcaption { font-size: 12px; color: var(--ink3); margin-top: 8px; line-height: 1.7; text-align: center; }
+.body blockquote { margin: 0 0 1.4em; padding-left: 16px; border-left: 0.5px solid var(--ink3); color: var(--ink2); }
+.body hr { border: 0; border-top: 0.5px solid var(--line); margin: 36px 0; }
+.body code { font-size: 0.9em; background: var(--tone); padding: 1px 5px; border-radius: 4px; }
+.body table { border-collapse: collapse; width: 100%; font-size: 14px; display: block; overflow-x: auto; }
+.body th, .body td { border-bottom: 0.5px solid var(--line); padding: 8px 10px; text-align: left; }
+.close { border-top: 0.5px solid var(--line); margin-top: 42px; padding-top: 22px; color: var(--ink2); font-size: 15px; }
+.close p { margin: 0 0 1em; }
+.cta { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 24px; padding: 18px 20px; background: var(--tone); border-radius: 12px; }
+.cta .t { font-size: 14px; line-height: 1.7; min-width: 0; color: var(--ink1); }
+.cta .t .word { width: 76px; margin-bottom: 6px; }
+.btn { display: inline-block; background: var(--ink1); color: var(--bg); text-decoration: none; font-size: 13px; font-weight: 500; padding: 8px 18px; border-radius: 999px; }
+.rel { max-width: var(--measure); padding-bottom: 12px; }
+.rel h2 { font-size: 14px; color: var(--ink3); font-weight: 500; margin: 0 0 6px; padding-top: 22px; border-top: 0.5px solid var(--line); }
+
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+.close a { text-underline-offset: 3px; text-decoration-thickness: 0.5px; overflow-wrap: anywhere; }

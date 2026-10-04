@@ -1,0 +1,29 @@
+{{ define "main" }}
+<header class="pagehead">
+  <h1>{{ .Title }}</h1>
+  {{ with .Params.description }}<p>{{ . }}</p>{{ end }}
+</header>
+{{- if eq .Section "guide" }}
+  {{- $guide := .RegularPages -}}
+  {{- range $s := slice (dict "n" 1 "label" "Step 1　まずはこれだけ") (dict "n" 2 "label" "Step 2　慣れてきたら") (dict "n" 3 "label" "Step 3　こだわりたい人へ") }}
+  {{- $pages := sort (where $guide "Params.step" $s.n) "Params.id" }}
+  <h2 class="steptitle" id="step{{ $s.n }}">{{ $s.label }}</h2>
+  {{- if $pages }}
+  <ul class="rows">
+    {{- range $pages }}
+    <li><a href="{{ .RelPermalink }}"><b>{{ .Title }}</b>{{ with .Params.description }}<span>{{ . }}</span>{{ end }}</a></li>
+    {{- end }}
+  </ul>
+  {{- else }}<p class="meta">準備中です</p>{{ end }}
+  {{- end }}
+{{- else }}
+  {{- range .RegularPages.ByDate.Reverse }}
+  <article class="post">
+    {{ partial "cover.html" (dict "page" . "link" true "eager" false) }}
+    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    {{ with .Params.description }}<p>{{ . }}</p>{{ end }}
+    <div class="meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time></div>
+  </article>
+  {{- end }}
+{{- end }}
+{{ end }}

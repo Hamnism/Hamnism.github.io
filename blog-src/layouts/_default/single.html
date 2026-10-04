@@ -1,0 +1,43 @@
+{{ define "main" }}
+<article class="art">
+  {{- with partial "catlabel.html" . }}<div class="cat">{{ . }}</div>{{ end }}
+  <h1>{{ .Title }}</h1>
+  {{- if not .Date.IsZero }}
+  <div class="meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>{{ if and (not .Lastmod.IsZero) (ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02")) }}　更新 {{ .Lastmod.Format "2006.01.02" }}{{ end }}</div>
+  {{- end }}
+  {{- if .Params.cover }}{{ partial "cover.html" (dict "page" . "link" false "eager" true) }}{{ end }}
+  <div class="body">
+    {{ .Content }}
+  </div>
+  <div class="close">
+    {{- $key := printf "%v" (.Params.closing | default 2) -}}
+    {{- $c := hugo.Data.closing }}
+    <p>{{ index $c.first $key }}</p>
+    {{- range $c.common }}
+    <p>{{ . }}</p>
+    {{- end }}
+    <p>お問い合わせフォーム：<a href="{{ site.Params.formURL }}" target="_blank" rel="noopener">{{ site.Params.formURL }}</a></p>
+    {{- range $c.last }}
+    <p>{{ . }}</p>
+    {{- end }}
+    <div class="cta">
+      <div class="t"><span class="word"></span>iPhoneとiPadのための掲示板専用ブラウザ</div>
+      <a class="btn" href="{{ site.Params.appStoreURL }}" target="_blank" rel="noopener">App Storeでダウンロード</a>
+    </div>
+  </div>
+</article>
+{{- /* 関連記事: front matter の related (記事 id の配列) を優先、無ければ同じ区分の他の記事を 3 本。 */ -}}
+{{- $rel := slice -}}
+{{- with .Params.related }}{{ range . }}{{ $id := . }}{{ range where site.RegularPages "Params.id" $id }}{{ $rel = $rel | append . }}{{ end }}{{ end }}{{ end -}}
+{{- if not $rel }}{{ $rel = first 3 (where (where site.RegularPages "Section" .Section) "Permalink" "ne" .Permalink) }}{{ end -}}
+{{- if and $rel (ne .Section "") }}
+<section class="rel">
+  <h2>あわせて読みたい</h2>
+  <ul class="rows">
+    {{- range $rel }}
+    <li><a href="{{ .RelPermalink }}"><b>{{ .Title }}</b>{{ with .Params.description }}<span>{{ . }}</span>{{ end }}</a></li>
+    {{- end }}
+  </ul>
+</section>
+{{- end }}
+{{ end }}

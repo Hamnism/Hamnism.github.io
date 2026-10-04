@@ -36,3 +36,4 @@ User-agent: Bingbot
 Allow: /
 
 Sitemap: https://hamnism.com/sitemap.xml
+Sitemap: https://hamnism.com/lichen/blog/sitemap.xml

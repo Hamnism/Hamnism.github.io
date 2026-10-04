@@ -1,0 +1,22 @@
+{{ define "main" }}
+{{- $pages := where site.RegularPages "Section" "in" (slice "guide" "story") -}}
+{{- $pager := .Paginate $pages.ByDate.Reverse 10 -}}
+<h1 class="sr-only">{{ site.Title }}</h1>
+{{- range $i, $p := $pager.Pages }}
+<article class="post">
+  {{ partial "cover.html" (dict "page" $p "link" true "eager" (eq $i 0)) }}
+  <div class="cat">{{ partial "catlabel.html" $p }}</div>
+  <h2><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h2>
+  {{ with $p.Params.description }}<p>{{ . }}</p>{{ end }}
+  <div class="meta"><time datetime="{{ $p.Date.Format "2006-01-02" }}">{{ $p.Date.Format "2006.01.02" }}</time></div>
+</article>
+{{- else }}
+<p>記事を準備中です。</p>
+{{- end }}
+{{- if gt $pager.TotalPages 1 }}
+<nav class="pager" aria-label="ページ送り">
+  <span>{{ if $pager.HasPrev }}<a href="{{ $pager.Prev.URL }}">新しい記事</a>{{ end }}</span>
+  <span>{{ if $pager.HasNext }}<a href="{{ $pager.Next.URL }}">前の記事</a>{{ end }}</span>
+</nav>
+{{- end }}
+{{ end }}

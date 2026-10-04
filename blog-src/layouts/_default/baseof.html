@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+{{ partial "head.html" . }}
+</head>
+<body>
+<div class="topbar">
+  <a href="{{ site.Home.RelPermalink }}" aria-label="Lichen Blog"><span class="word"></span></a>
+  <button class="burger" id="burger" type="button" aria-label="もくじを開く" aria-expanded="false" aria-controls="side"><span></span></button>
+</div>
+<div class="layout">
+  {{ partial "sidebar.html" . }}
+  <main class="main">
+    {{ block "main" . }}{{ end }}
+    <footer class="ft">
+      <span>LICHEN — HAMNISM © {{ now.Year }}</span>
+      <span>
+        <a href="{{ site.Params.lpURL }}">Lichen</a>
+        <a href="{{ site.Params.termsURL }}">利用規約</a>
+        <a href="{{ site.Params.privacyURL }}">プライバシー</a>
+        <a href="{{ "index.xml" | relURL }}">RSS</a>
+      </span>
+    </footer>
+  </main>
+</div>
+<script>
+(function () {
+  var btn = document.getElementById("burger"), side = document.getElementById("side");
+  if (!btn || !side) return;
+  btn.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.setAttribute("aria-label", open ? "もくじを閉じる" : "もくじを開く");
+  });
+  // もくじの中のリンクを押したら (同じページ内の見出しへ飛ぶ時も) 畳む。
+  side.addEventListener("click", function (e) {
+    if (e.target.closest("a")) { side.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); }
+  });
+})();
+</script>
+</body>
+</html>
