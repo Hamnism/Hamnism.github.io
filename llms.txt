@@ -49,3 +49,4 @@ iOS 26.0 / iPadOS 26.0 以上 — iPhone・iPad 対応
 - リリースノート: https://hamnism.com/lichen/releases/
 - 利用規約: https://hamnism.com/lichen/terms.html
 - プライバシーポリシー: https://hamnism.com/lichen/privacy.html
+- 連絡先: info@hamnism.com
