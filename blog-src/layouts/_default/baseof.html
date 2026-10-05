@@ -15,9 +15,9 @@
     <footer class="ft">
       <span>LICHEN — HAMNISM © {{ now.Year }}</span>
       <span>
-        <a href="{{ site.Params.lpURL }}">Lichen</a>
         <a href="{{ site.Params.termsURL }}">利用規約</a>
         <a href="{{ site.Params.privacyURL }}">プライバシー</a>
+        <a href="{{ site.Params.lpURL }}">Lichenのサイトへ</a>
         <a href="{{ "index.xml" | relURL }}">RSS</a>
       </span>
     </footer>
@@ -38,5 +38,7 @@
   });
 })();
 </script>
+{{- $js := resources.Get "js/search.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" data-index="{{ "searchindex.json" | relURL }}" data-search="{{ (site.GetPage "/search").RelPermalink }}" defer></script>
 </body>
 </html>

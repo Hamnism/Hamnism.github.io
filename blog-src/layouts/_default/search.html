@@ -1,0 +1,10 @@
+{{ define "main" }}
+<header class="pagehead">
+  <h1>記事を探す</h1>
+  <p>タイトルと本文から探します。ことばを空白で区切ると、すべて含む記事に絞られます。</p>
+</header>
+<form class="sbox sbox-page" role="search" action="{{ .RelPermalink }}">
+  <input type="search" name="q" id="q-page" placeholder="例: タブ 並び替え" autocomplete="off" autofocus>
+</form>
+<div id="search-results" class="sres" aria-live="polite"></div>
+{{ end }}

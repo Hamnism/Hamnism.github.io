@@ -1,0 +1,12 @@
+{{- /* ブログ内検索の索引。公開済みの記事だけ。本文はタグを落として平文にする。 */ -}}
+{{- $items := slice -}}
+{{- range where site.RegularPages "Params.hidden" "ne" true -}}
+  {{- $items = $items | append (dict
+      "t" .Title
+      "d" (.Params.description | default "")
+      "u" .RelPermalink
+      "c" (partial "catlabel.html" .)
+      "b" (.Plain | replaceRE `\s+` " " | truncate 20000 "")
+  ) -}}
+{{- end -}}
+{{- $items | jsonify -}}
