@@ -2,10 +2,20 @@
 <article class="art">
   {{- with partial "catlabel.html" . }}<div class="cat">{{ . }}</div>{{ end }}
   <h1>{{ .Title }}</h1>
-  {{- if not .Date.IsZero }}
-  <div class="meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>{{ if and (not .Lastmod.IsZero) (ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02")) }}　更新 {{ .Lastmod.Format "2006.01.02" }}{{ end }}</div>
-  {{- end }}
+  <div class="meta byline">
+    <span>{{ .Params.author | default site.Params.author }}</span>
+    {{- if not .Date.IsZero }}
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+    {{- if and (not .Lastmod.IsZero) (ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02")) }}<span>更新 {{ .Lastmod.Format "2006.01.02" }}</span>{{ end }}
+    {{- end }}
+  </div>
   {{- if .Params.cover }}{{ partial "cover.html" (dict "page" . "link" false "eager" true) }}{{ end }}
+  {{- if and (ne .Params.toc false) (gt (len (findRE `<h2` .Content)) 1) }}
+  <nav class="toc" aria-label="この記事のもくじ">
+    <div class="toc-h">もくじ</div>
+    {{ .TableOfContents }}
+  </nav>
+  {{- end }}
   <div class="body">
     {{ .Content }}
   </div>
@@ -26,18 +36,5 @@
     </div>
   </div>
 </article>
-{{- /* 関連記事: front matter の related (記事 id の配列) を優先、無ければ同じ区分の他の記事を 3 本。 */ -}}
-{{- $rel := slice -}}
-{{- with .Params.related }}{{ range . }}{{ $id := . }}{{ range where site.RegularPages "Params.id" $id }}{{ $rel = $rel | append . }}{{ end }}{{ end }}{{ end -}}
-{{- if not $rel }}{{ $rel = first 3 (where (where site.RegularPages "Section" .Section) "Permalink" "ne" .Permalink) }}{{ end -}}
-{{- if and $rel (ne .Section "") }}
-<section class="rel">
-  <h2>あわせて読みたい</h2>
-  <ul class="rows">
-    {{- range $rel }}
-    <li><a href="{{ .RelPermalink }}"><b>{{ .Title }}</b>{{ with .Params.description }}<span>{{ . }}</span>{{ end }}</a></li>
-    {{- end }}
-  </ul>
-</section>
-{{- end }}
+{{ partial "related.html" . }}
 {{ end }}

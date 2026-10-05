@@ -1,0 +1,14 @@
+{{- /* 本文の中から別の記事へ、記事 id でリンクする。
+       {{< post "F07" >}}                          → 公開済みなら「記事タイトル」のリンク
+       {{< post "F07" "タブの記事" >}}              → 表示する文字を指定
+       相手がまだ公開されていない時はリンクにせず文字だけ出す (公開されたら自動でリンクになる)。 */ -}}
+{{- $id := .Get 0 -}}
+{{- $text := .Get 1 -}}
+{{- $hit := where site.RegularPages "Params.id" $id -}}
+{{- if $hit -}}
+  {{- $p := index $hit 0 -}}
+  <a href="{{ $p.RelPermalink }}">{{ $text | default $p.Title }}</a>
+{{- else -}}
+  {{- if not $text }}{{ warnf "post shortcode: %s は未公開で、表示する文字も無い (%s)" $id .Page.File.Path }}{{ end -}}
+  {{- $text -}}
+{{- end -}}

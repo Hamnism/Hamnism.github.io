@@ -1,0 +1,28 @@
+{{- /* 関連する記事 (相互リンク)。
+       1. この記事の front matter `related: [F07, F08]` に書いた記事 (書いた順)
+       2. この記事を related に挙げている記事 (相手側からの逆リンク)
+       まだ公開されていない id は黙って飛ばすので、先に全部書いておいてよい。
+       どちらも無ければ、同じ区分の記事を 3 本出す。 */ -}}
+{{- $self := . -}}
+{{- $rel := slice -}}
+{{- range (.Params.related | default slice) }}
+  {{- range where site.RegularPages "Params.id" . }}{{ if ne . $self }}{{ $rel = $rel | append . }}{{ end }}{{ end }}
+{{- end }}
+{{- with .Params.id }}
+  {{- range where site.RegularPages "Params.related" "intersect" (slice .) }}
+    {{- if and (ne . $self) (not (in $rel .)) }}{{ $rel = $rel | append . }}{{ end }}
+  {{- end }}
+{{- end }}
+{{- if and (not $rel) (ne .Section "") }}
+  {{- $rel = first 3 (where (where site.RegularPages "Section" .Section) "Permalink" "ne" .Permalink) }}
+{{- end }}
+{{- with $rel }}
+<section class="rel">
+  <h2>関連する記事</h2>
+  <ul class="rows">
+    {{- range . }}
+    <li><a href="{{ .RelPermalink }}"><b>{{ .Title }}</b>{{ with .Params.description }}<span>{{ . }}</span>{{ end }}</a></li>
+    {{- end }}
+  </ul>
+</section>
+{{- end }}
