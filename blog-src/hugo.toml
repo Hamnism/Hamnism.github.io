@@ -17,6 +17,8 @@ enableGitInfo = false
   tagline = "iPhoneとiPadのための掲示板専用ブラウザ。使い方と、作っている人のはなし。"
   # Google アナリティクス (GA4) の測定 ID。"G-XXXXXXXXXX" を入れると計測が始まる。空なら何も読み込まない。
   author = "Hamnism"
+  # SNS カードの共通画像 (記事に ogimage / cover が無い時とトップページ)。blog-src/static/ に置く。
+  ogImage = "ogp.jpg"
   ga4 = ""
   # App Store へのリンク。キャンペーンリンクを発行したらここを差し替える (ブログ経由の DL 数が分かる)。
   appStoreURL = "https://apps.apple.com/jp/app/lichen/id6771805838"
