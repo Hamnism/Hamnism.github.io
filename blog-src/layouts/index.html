@@ -2,6 +2,7 @@
 {{- $pages := where site.RegularPages "Section" "in" (slice "guide" "story") -}}
 {{- $pager := .Paginate $pages.ByDate.Reverse 10 -}}
 <h1 class="sr-only">{{ site.Title }}</h1>
+<div class="posts">
 {{- range $i, $p := $pager.Pages }}
 <article class="post">
   {{ partial "cover.html" (dict "page" $p "link" true "eager" (eq $i 0)) }}
@@ -13,6 +14,7 @@
 {{- else }}
 <p>記事を準備中です。</p>
 {{- end }}
+</div>
 {{- if gt $pager.TotalPages 1 }}
 <nav class="pager" aria-label="ページ送り">
   <span>{{ if $pager.HasPrev }}<a href="{{ $pager.Prev.URL }}">新しい記事</a>{{ end }}</span>

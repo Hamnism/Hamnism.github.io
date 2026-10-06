@@ -97,10 +97,16 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .pagehead { margin-block-end: 30px; }
 .pagehead h1 { font-size: clamp(24px, 3.2vw, 34px); line-height: 1.4; margin: 0 0 4px; }
 .pagehead p { margin: 0; color: var(--ink3); font-size: 14px; }
-.post { display: grid; gap: 12px; padding-bottom: 38px; margin-bottom: 38px; border-bottom: 0.5px solid var(--line); }
+.post { display: grid; gap: 10px; align-content: start; padding-bottom: 30px; margin-bottom: 30px; border-bottom: 0.5px solid var(--line); }
+/* 広い画面では一覧を 2 列に。狭い画面は 1 列のまま */
+@media (min-width: 821px) {
+  .posts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 36px; }
+  .posts .post h2 { font-size: 20px; line-height: 1.5; }
+  .posts .post p { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .posts .post:last-of-type { border-bottom: 0.5px solid var(--line); margin-bottom: 30px; }
+  .posts .post:nth-last-child(-n+2):nth-child(odd), .posts .post:last-child { border-bottom: 0; }
+}
 .post:last-of-type { border-bottom: 0; margin-bottom: 8px; }
-.main > .post { margin-bottom: 38px; }
-.main > .post:last-of-type { margin-bottom: 8px; }
 .cat { font-size: 11px; color: var(--ink3); letter-spacing: 0.1em; }
 .post h2 { font-size: clamp(22px, 3vw, 32px); line-height: 1.45; letter-spacing: 0.01em; font-weight: 700; margin: 0; word-break: auto-phrase; }
 .post h2 a { text-decoration: none; }

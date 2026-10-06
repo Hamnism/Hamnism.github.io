@@ -17,6 +17,7 @@
   {{- else }}<p class="meta">準備中です</p>{{ end }}
   {{- end }}
 {{- else }}
+  <div class="posts">
   {{- range (cond (eq .Section "release") .RegularPages.ByWeight .RegularPages.ByDate.Reverse) }}
   <article class="post">
     {{ partial "cover.html" (dict "page" . "link" true "eager" false) }}
@@ -25,5 +26,6 @@
     <div class="meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time></div>
   </article>
   {{- end }}
+  </div>
 {{- end }}
 {{ end }}
