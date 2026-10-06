@@ -5,6 +5,8 @@ id: M00
 slug: why-lichen
 description: "iPhoneやiPadでの掲示板閲覧を取り巻く環境と、Lichenを開発するに至った経緯について。"
 closing: 2
+cover: cover.jpg
+ogimage: og.png
 ---
 ## はじめに
 
