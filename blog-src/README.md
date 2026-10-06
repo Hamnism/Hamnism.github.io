@@ -10,6 +10,7 @@
 blog-src/content/
   guide/<slug>/index.md      機能ガイド (F01〜)
   story/<slug>/index.md      その他 (M00, M03〜)
+  release/<version>/index.md アップデート (バージョンごとに1記事。新しいビルドは ## を上に追記)
   <slug>/index.md            固定ページ (M01 ライケンとは？ / M02 専ブラとは？)
 ```
 

@@ -11,6 +11,7 @@ enableGitInfo = false
 [permalinks]
   guide = "/guide/:slug/"
   story = "/story/:slug/"
+  release = "/release/:slug/"
 
 [params]
   description = "iPhoneとiPadのための掲示板専用ブラウザLichenの使い方と、作っている人のはなし。"

@@ -20,6 +20,7 @@
     {{ .Content }}
   </div>
   <div class="close">
+    {{- if ne .Section "release" }}
     {{- $key := printf "%v" (.Params.closing | default 2) -}}
     {{- $c := hugo.Data.closing }}
     <p>{{ index $c.first $key }}</p>
@@ -30,11 +31,12 @@
     {{- range $c.last }}
     <p>{{ . }}</p>
     {{- end }}
+    {{- end }}
     <div class="cta">
       <div class="t"><span class="word"></span>iPhoneとiPadのための掲示板専用ブラウザ</div>
       <a class="btn" href="{{ site.Params.appStoreURL }}" target="_blank" rel="noopener">App Storeでダウンロード</a>
     </div>
   </div>
 </article>
-{{ partial "related.html" . }}
+{{ if ne .Section "release" }}{{ partial "related.html" . }}{{ end }}
 {{ end }}

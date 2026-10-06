@@ -3,6 +3,7 @@
 {{- $cur := . -}}
 {{- $guide := where site.RegularPages "Section" "guide" -}}
 {{- $story := where site.RegularPages "Section" "story" -}}
+{{- $release := where site.RegularPages "Section" "release" -}}
 {{- $steps := slice (dict "n" 1 "label" "Step1. 基本機能について") (dict "n" 2 "label" "Step2. 便利な機能") (dict "n" 3 "label" "Step3. Lichenだけの機能") -}}
 <aside class="side" id="side">
   <a class="brand" href="{{ site.Home.RelPermalink }}">
@@ -36,6 +37,17 @@
       {{- if $story }}
       <ul>
         {{- range $story.ByDate.Reverse }}
+        <li><a href="{{ .RelPermalink }}"{{ if eq . $cur }} class="cur" aria-current="page"{{ end }}>{{ .Params.short | default .Title }}</a>
+          {{- if eq . $cur }}{{ .TableOfContents }}{{ end }}</li>
+        {{- end }}
+      </ul>
+      {{- else }}<div class="empty">準備中です</div>{{ end }}
+    </details>
+    <details{{ if eq $cur.Section "release" }} open{{ end }}>
+      <summary><span>アップデート<span class="n">{{ len $release }}</span></span></summary>
+      {{- if $release }}
+      <ul>
+        {{- range $release.ByWeight }}
         <li><a href="{{ .RelPermalink }}"{{ if eq . $cur }} class="cur" aria-current="page"{{ end }}>{{ .Params.short | default .Title }}</a>
           {{- if eq . $cur }}{{ .TableOfContents }}{{ end }}</li>
         {{- end }}

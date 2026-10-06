@@ -17,7 +17,7 @@
   {{- else }}<p class="meta">準備中です</p>{{ end }}
   {{- end }}
 {{- else }}
-  {{- range .RegularPages.ByDate.Reverse }}
+  {{- range (cond (eq .Section "release") .RegularPages.ByWeight .RegularPages.ByDate.Reverse) }}
   <article class="post">
     {{ partial "cover.html" (dict "page" . "link" true "eager" false) }}
     <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
