@@ -20,7 +20,7 @@ enableGitInfo = false
   author = "Hamnism"
   # SNS カードの共通画像 (記事に ogimage / cover が無い時とトップページ)。blog-src/static/ に置く。
   ogImage = "ogp.jpg"
-  ga4 = ""
+  ga4 = "G-50Y57JTGTK"
   # App Store へのリンク。キャンペーンリンクを発行したらここを差し替える (ブログ経由の DL 数が分かる)。
   appStoreURL = "https://apps.apple.com/jp/app/lichen/id6771805838"
   formURL = "https://forms.gle/Ye8MgjpmATaZuPuD6"
