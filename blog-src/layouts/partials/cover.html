@@ -1,9 +1,17 @@
-{{- /* 記事の表紙。front matter の cover (記事フォルダ内の画像ファイル名) があれば 16:9 に整えて出す。
-       無ければ何も出さない (文字だけの記事になる)。引数: dict "page" . "link" true/false "eager" true/false */ -}}
+{{- /* 記事の画像。
+       - 一覧 (link=true): front matter の ogimage (タイトル入りの画像) があればそれを、元の比率 (1200x630) のまま出す。無ければ cover。
+       - 記事の冒頭 (link=false): cover (文字なしの見出し画像) を 16:9 に整えて出す。
+       どちらも無ければ何も出さない (文字だけになる)。引数: dict "page" . "link" true/false "eager" true/false */ -}}
 {{- $p := .page -}}
-{{- with $p.Params.cover }}{{ with $p.Resources.GetMatch . }}
-{{- $s := .Fill "800x450 Center q82" -}}{{- $l := .Fill "1600x900 Center q82" -}}
-{{- if $.link }}<a class="cover" href="{{ $p.RelPermalink }}" aria-label="{{ $p.Title }}">{{ else }}<div class="cover">{{ end -}}
-<img src="{{ $s.RelPermalink }}" srcset="{{ $s.RelPermalink }} 800w, {{ $l.RelPermalink }} 1600w" sizes="(max-width: 820px) 100vw, 640px" width="1600" height="900" alt="" {{ if $.eager }}fetchpriority="high"{{ else }}loading="lazy"{{ end }}>
-{{- if $.link }}</a>{{ else }}</div>{{ end -}}
-{{- end }}{{ end -}}
+{{- $og := "" -}}{{- with $p.Params.ogimage }}{{ $og = $p.Resources.GetMatch . }}{{ end -}}
+{{- $cv := "" -}}{{- with $p.Params.cover }}{{ $cv = $p.Resources.GetMatch . }}{{ end -}}
+{{- $load := cond .eager `fetchpriority="high"` `loading="lazy"` -}}
+{{- if and .link $og }}
+{{- $s := $og.Resize "800x webp q82" -}}{{- $l := $og.Resize "1200x webp q82" -}}
+<a class="cover og" href="{{ $p.RelPermalink }}" aria-label="{{ $p.Title }}"><img src="{{ $s.RelPermalink }}" srcset="{{ $s.RelPermalink }} 800w, {{ $l.RelPermalink }} 1200w" sizes="(max-width: 820px) 100vw, 640px" width="1200" height="630" alt="" {{ $load | safeHTMLAttr }}></a>
+{{- else if $cv }}
+{{- $s := $cv.Fill "800x450 Center q82" -}}{{- $l := $cv.Fill "1600x900 Center q82" -}}
+{{- if .link }}<a class="cover" href="{{ $p.RelPermalink }}" aria-label="{{ $p.Title }}">{{ else }}<div class="cover">{{ end -}}
+<img src="{{ $s.RelPermalink }}" srcset="{{ $s.RelPermalink }} 800w, {{ $l.RelPermalink }} 1600w" sizes="(max-width: 820px) 100vw, 640px" width="1600" height="900" alt="" {{ $load | safeHTMLAttr }}>
+{{- if .link }}</a>{{ else }}</div>{{ end -}}
+{{- end -}}
