@@ -55,6 +55,20 @@
   .updated { color: var(--ink4); font-size: 12px; margin-top: 64px; padding-top: 24px; border-top: 0.5px solid var(--ink5); }
   .home-link { display: inline-block; margin-top: 24px; font-size: 13px; color: var(--ink3); }
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-50Y57JTGTK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-50Y57JTGTK');
+  // App Store へのリンクのクリックを「app_store_click」として記録 (どのボタンかを link_text に)
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href*="apps.apple.com"]');
+    if (!a) return;
+    gtag('event', 'app_store_click', { link_text: (a.textContent || a.querySelector('img')?.alt || '').trim().slice(0, 50), page_path: location.pathname });
+  });
+</script>
 </head>
 <body>
 <div class="wrap">
