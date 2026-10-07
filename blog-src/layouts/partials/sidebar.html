@@ -1,10 +1,10 @@
-{{- /* もくじ: 新着 / 機能ガイド Step 1-3 / その他 / 固定ページ / App Store。
+{{- /* もくじ: 新着 / 機能ガイド Step 1-3 / 開発ノート / 固定ページ / App Store。
        今いる区分は開いた状態にし、読んでいる記事の下にその記事の見出しを並べる。 */ -}}
 {{- $cur := . -}}
 {{- $guide := where site.RegularPages "Section" "guide" -}}
 {{- $story := where site.RegularPages "Section" "story" -}}
 {{- $release := where site.RegularPages "Section" "release" -}}
-{{- $steps := slice (dict "n" 1 "label" "Step1. 基本機能について") (dict "n" 2 "label" "Step2. 便利な機能") (dict "n" 3 "label" "Step3. Lichenだけの機能") -}}
+{{- $steps := hugo.Data.steps -}}
 <aside class="side" id="side">
   <a class="brand" href="{{ site.Home.RelPermalink }}">
     <span class="word"></span><span class="sr-only">Lichen Blog</span>
@@ -33,7 +33,7 @@
     </details>
     {{- end }}
     <details{{ if eq $cur.Section "story" }} open{{ end }}>
-      <summary><span>その他<span class="n">{{ len $story }}</span></span></summary>
+      <summary><span>開発ノート<span class="n">{{ len $story }}</span></span></summary>
       {{- if $story }}
       <ul>
         {{- range $story.ByDate.Reverse }}

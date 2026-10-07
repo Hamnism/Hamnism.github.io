@@ -1,24 +1,81 @@
 {{ define "main" }}
-{{- $pages := where site.RegularPages "Section" "in" (slice "guide" "story") -}}
-{{- $pager := .Paginate $pages.ByDate.Reverse 10 -}}
+{{- /* トップ: 新着 3 本 → 機能ガイド (Step1〜3 の道筋) → アップデート (最新ビルドの抜粋) → 開発ノート → App Store */ -}}
 <h1 class="sr-only">{{ site.Title }}</h1>
-<div class="posts">
-{{- range $i, $p := $pager.Pages }}
-<article class="post">
-  {{ partial "cover.html" (dict "page" $p "link" true "eager" (eq $i 0)) }}
-  <div class="cat">{{ partial "catlabel.html" $p }}</div>
-  <h2><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h2>
-  {{ with $p.Params.description }}<p>{{ . }}</p>{{ end }}
-  <div class="meta"><time datetime="{{ $p.Date.Format "2006-01-02" }}">{{ $p.Date.Format "2006.01.02" }}</time></div>
-</article>
-{{- else }}
-<p>記事を準備中です。</p>
+{{- $new := first 3 (where site.RegularPages "Section" "in" (slice "guide" "story")).ByDate.Reverse }}
+<section class="hsec">
+  <h2 class="hsec-h">新着</h2>
+  <div class="posts posts-new">
+    {{- range $i, $p := $new }}
+    <article class="post{{ if eq $i 0 }} lead{{ end }}">
+      {{ partial "cover.html" (dict "page" $p "link" true "eager" (eq $i 0)) }}
+      <div class="cat">{{ partial "catlabel.html" $p }}</div>
+      <h3><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h3>
+      {{ with $p.Params.description }}<p>{{ . }}</p>{{ end }}
+      <div class="meta"><time datetime="{{ $p.Date.Format "2006-01-02" }}">{{ $p.Date.Format "2006.01.02" }}</time></div>
+    </article>
+    {{- else }}
+    <p>記事を準備中です。</p>
+    {{- end }}
+  </div>
+</section>
+
+<section class="hsec">
+  <h2 class="hsec-h">機能ガイド<a class="hsec-more" href="{{ (site.GetPage "/guide").RelPermalink }}">すべて見る</a></h2>
+  {{- $guide := where site.RegularPages "Section" "guide" }}
+  <div class="steps">
+    {{- range hugo.Data.steps }}
+    {{- $pages := sort (where $guide "Params.step" .n) "Params.id" }}
+    <div class="step">
+      <div class="step-n">Step{{ .n }}</div>
+      <h3 class="step-t">{{ replaceRE `^Step\d+\.\s*` "" .label }}</h3>
+      <p class="step-b">{{ .blurb }}</p>
+      {{- if $pages }}
+      <ol class="step-l">
+        {{- range first 5 $pages }}
+        <li><a href="{{ .RelPermalink }}">{{ .Params.short | default .Title }}</a></li>
+        {{- end }}
+      </ol>
+      {{- if gt (len $pages) 5 }}<a class="step-more" href="{{ (site.GetPage "/guide").RelPermalink }}#step{{ .n }}">ほか{{ sub (len $pages) 5 }}本</a>{{ end }}
+      {{- else }}<p class="step-empty">準備中です</p>{{ end }}
+    </div>
+    {{- end }}
+  </div>
+</section>
+
+{{- with first 1 (where site.RegularPages "Section" "release").ByWeight }}{{ $r := index . 0 }}
+{{- $m := findRESubmatch `(?s)<h2[^>]*>(.*?)</h2>.*?<ul>(.*?)</ul>` $r.Content 1 }}
+{{- with $m }}{{ $m = index . 0 }}
+<section class="hsec">
+  <h2 class="hsec-h">アップデート<a class="hsec-more" href="{{ (site.GetPage "/release").RelPermalink }}">すべての履歴</a></h2>
+  <div class="upd">
+    <div class="upd-v"><a href="{{ $r.RelPermalink }}">{{ index $m 1 | plainify }}</a><span class="meta">{{ $r.Title }}</span></div>
+    <ul class="upd-l">
+      {{- range first 3 (findRESubmatch `(?s)<li>(.*?)</li>` (index $m 2)) }}
+      <li>{{ index . 1 | safeHTML }}</li>
+      {{- end }}
+    </ul>
+    <a class="upd-more" href="{{ $r.RelPermalink }}">このバージョンの更新内容をすべて見る</a>
+  </div>
+</section>
+{{- end }}{{ end }}
+
+{{- with first 3 (where site.RegularPages "Section" "story").ByDate.Reverse }}
+<section class="hsec">
+  <h2 class="hsec-h">開発ノート<a class="hsec-more" href="{{ (site.GetPage "/story").RelPermalink }}">すべて見る</a></h2>
+  <div class="notes">
+    {{- range . }}
+    <a class="note" href="{{ .RelPermalink }}">
+      <b>{{ .Title }}</b>
+      {{ with .Params.description }}<span>{{ . }}</span>{{ end }}
+      <time class="meta" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+    </a>
+    {{- end }}
+  </div>
+</section>
 {{- end }}
+
+<div class="cta home-cta">
+  <div class="t"><span class="word"></span>iPhoneとiPadのための掲示板専用ブラウザ</div>
+  <a class="btn" href="{{ site.Params.appStoreURL }}" target="_blank" rel="noopener">App Storeでダウンロード</a>
 </div>
-{{- if gt $pager.TotalPages 1 }}
-<nav class="pager" aria-label="ページ送り">
-  <span>{{ if $pager.HasPrev }}<a href="{{ $pager.Prev.URL }}">新しい記事</a>{{ end }}</span>
-  <span>{{ if $pager.HasNext }}<a href="{{ $pager.Next.URL }}">前の記事</a>{{ end }}</span>
-</nav>
-{{- end }}
 {{ end }}

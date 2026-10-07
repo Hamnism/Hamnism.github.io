@@ -9,7 +9,7 @@ Lichenは、iPhoneとiPadのための掲示板専用ブラウザ(専ブラ)で�
 - [{{ .Title }}]({{ .Permalink }}): {{ .Params.description }}
 {{- end }}
 
-## その他
+## 開発ノート
 {{ range partial "ordered.html" "story" }}
 - [{{ .Title }}]({{ .Permalink }}): {{ .Params.description }}
 {{- end }}

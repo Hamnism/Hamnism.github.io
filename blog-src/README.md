@@ -9,7 +9,7 @@
 ```
 blog-src/content/
   guide/<slug>/index.md      機能ガイド (F01〜)
-  story/<slug>/index.md      その他 (M00, M03〜)
+  story/<slug>/index.md      開発ノート (M00, M03〜)
   release/<version>/index.md アップデート (バージョンごとに1記事。新しいビルドは ## を上に追記)
   <slug>/index.md            固定ページ (M01 ライケンとは？ / M02 専ブラとは？)
 ```
@@ -26,7 +26,7 @@ id: M00                                      # content_map.md の番号。機能
 slug: why-lichen                             # フォルダ名と同じにする
 description: "一覧とSNSカードに出る1〜2文。"
 step: 1                                      # 機能ガイドだけ必須: 1 / 2 / 3
-closing: 2                                   # 末尾の定型文: 1=使い方・機能 / 2=その他 (開発のはなしなど)
+closing: 2                                   # 末尾の定型文: 1=使い方・機能 / 2=開発ノート (開発のはなし、専ブラの知識など)
 cover: cover.jpg                             # 任意。記事フォルダ内の文字なしの見出し画像。記事冒頭に出す (ogimage が無ければ一覧・SNSカードにも)
 ogimage: og.png                              # 任意。タイトル入りの画像 (1200x630)。一覧のサムネとSNSカードに、切り抜かずそのまま使う
 short: "作った理由"                           # 任意。もくじ用の短い題
