@@ -5,6 +5,9 @@
 <title>{{ $title }}</title>
 <meta name="description" content="{{ $desc }}">
 <link rel="canonical" href="{{ .Permalink }}">
+{{- /* ファビコン: LP と同じアプリアイコン */ -}}
+<link rel="icon" type="image/png" href="https://hamnism.com/lichen/assets/icon.png">
+<link rel="apple-touch-icon" href="https://hamnism.com/lichen/assets/icon.png">
 <meta property="og:site_name" content="{{ site.Title }}">
 <meta property="og:title" content="{{ cond .IsHome site.Title .Title }}">
 <meta property="og:description" content="{{ $desc }}">
