@@ -1,0 +1,13 @@
+{{- /* 区分ごとの「読む順」。前後の記事ナビともくじで同じ順を使う。
+       guide: Step1→2→3、各 Step は id 順 / story: 新しい順 / release: weight 順 */ -}}
+{{- $s := . -}}
+{{- $list := slice -}}
+{{- if eq $s "guide" }}
+  {{- $guide := where site.RegularPages "Section" "guide" }}
+  {{- range slice 1 2 3 }}{{ range sort (where $guide "Params.step" .) "Params.id" }}{{ $list = $list | append . }}{{ end }}{{ end }}
+{{- else if eq $s "release" }}
+  {{- range (where site.RegularPages "Section" "release").ByWeight }}{{ $list = $list | append . }}{{ end }}
+{{- else }}
+  {{- range (where site.RegularPages "Section" $s).ByDate.Reverse }}{{ $list = $list | append . }}{{ end }}
+{{- end }}
+{{- return $list -}}

@@ -1,0 +1,6 @@
+{{- /* タイトル上のパンくず: 区分 › Step (機能ガイドのみ)。構造化データの BreadcrumbList と同じ階層。 */ -}}
+<nav class="crumbs" aria-label="現在地">
+  <a href="{{ site.Home.RelPermalink }}">Lichen Blog</a>
+  {{- with .CurrentSection }}{{ if ne .RelPermalink site.Home.RelPermalink }}<span>›</span><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}{{ end }}
+  {{- if eq .Section "guide" }}{{ with .Params.step }}<span>›</span><a href="{{ (site.GetPage "/guide").RelPermalink }}#step{{ . }}">Step{{ . }}</a>{{ end }}{{ end }}
+</nav>

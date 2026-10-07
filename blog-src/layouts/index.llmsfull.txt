@@ -1,0 +1,16 @@
+# {{ site.Title }} — 全記事の本文
+
+> {{ site.Params.description }} 運営: Hamnism。アプリ本体: {{ site.Params.lpURL }} / App Store: {{ site.Params.appStoreURL }}
+{{ range slice "guide" "story" "release" }}{{ range partial "ordered.html" . }}
+
+---
+
+# {{ .Title }}
+
+- URL: {{ .Permalink }}
+- 区分: {{ partial "catlabel.html" . }}
+- 公開日: {{ .Date.Format "2006-01-02" }}
+{{ with .Params.description }}- 概要: {{ . }}{{ end }}
+
+{{ .RawContent | replaceRE `\{\{<\s*post\s+"[^"]*"\s*(?:"([^"]*)")?\s*>\}\}` "$1" | strings.TrimSpace }}
+{{ end }}{{ end }}

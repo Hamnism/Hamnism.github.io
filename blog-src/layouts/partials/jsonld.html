@@ -1,0 +1,63 @@
+{{- /* 構造化データ (JSON-LD)。検索エンジンと AI クローラ向け。
+       全ページ: WebSite + SoftwareApplication (Lichen 本体)
+       記事: BlogPosting + BreadcrumbList + (本文に Q./A. があれば) FAQPage */ -}}
+{{- $app := dict
+  "@type" "SoftwareApplication"
+  "@id" "https://hamnism.com/lichen/#app"
+  "name" "Lichen"
+  "operatingSystem" "iOS, iPadOS"
+  "applicationCategory" "UtilitiesApplication"
+  "description" "iPhoneとiPadのための掲示板専用ブラウザ。5ch・したらば・おーぷん2ちゃんねるなどをひとつのアプリで読み書きできる。広告なし・買い切り。"
+  "url" site.Params.lpURL
+  "installUrl" site.Params.appStoreURL
+  "downloadUrl" site.Params.appStoreURL
+  "author" (dict "@type" "Organization" "name" "Hamnism" "url" "https://hamnism.com/")
+-}}
+{{- $site := dict
+  "@type" "WebSite"
+  "@id" (printf "%s#website" site.BaseURL)
+  "url" site.BaseURL
+  "name" site.Title
+  "description" site.Params.description
+  "inLanguage" "ja"
+  "publisher" (dict "@type" "Organization" "name" "Hamnism" "url" "https://hamnism.com/")
+  "potentialAction" (dict "@type" "SearchAction" "target" (dict "@type" "EntryPoint" "urlTemplate" (printf "%ssearch/?q={search_term_string}" site.BaseURL)) "query-input" "required name=search_term_string")
+-}}
+{{- $graph := slice $site $app -}}
+{{- if and .IsPage (ne .Section "") -}}
+  {{- $og := site.Params.ogImage | default "https://hamnism.com/lichen/ogp.png" | absURL -}}
+  {{- with .Params.cover }}{{ with $.Resources.GetMatch . }}{{ $og = (.Fill "1200x630 Center").Permalink }}{{ end }}{{ end -}}
+  {{- with .Params.ogimage }}{{ with $.Resources.GetMatch . }}{{ $og = .Permalink }}{{ end }}{{ end -}}
+  {{- $cat := partial "catlabel.html" . -}}
+  {{- $post := dict
+    "@type" "BlogPosting"
+    "@id" (printf "%s#article" .Permalink)
+    "mainEntityOfPage" .Permalink
+    "url" .Permalink
+    "headline" .Title
+    "description" (.Params.description | default "")
+    "image" $og
+    "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
+    "dateModified" ((cond .Lastmod.IsZero .Date .Lastmod).Format "2006-01-02T15:04:05Z07:00")
+    "inLanguage" "ja"
+    "articleSection" $cat
+    "wordCount" .WordCount
+    "author" (dict "@type" "Organization" "name" (.Params.author | default site.Params.author) "url" "https://hamnism.com/")
+    "publisher" (dict "@type" "Organization" "name" "Hamnism" "url" "https://hamnism.com/")
+    "isPartOf" (dict "@id" (printf "%s#website" site.BaseURL))
+    "about" (dict "@id" "https://hamnism.com/lichen/#app")
+  -}}
+  {{- $graph = $graph | append $post -}}
+  {{- $crumbs := slice (dict "@type" "ListItem" "position" 1 "name" site.Title "item" site.BaseURL) -}}
+  {{- with .CurrentSection }}{{ if ne .RelPermalink site.Home.RelPermalink }}
+    {{- $crumbs = $crumbs | append (dict "@type" "ListItem" "position" 2 "name" .Title "item" .Permalink) -}}
+  {{- end }}{{ end -}}
+  {{- $crumbs = $crumbs | append (dict "@type" "ListItem" "position" (add (len $crumbs) 1) "name" .Title "item" .Permalink) -}}
+  {{- $graph = $graph | append (dict "@type" "BreadcrumbList" "itemListElement" $crumbs) -}}
+  {{- $faq := slice -}}
+  {{- range findRESubmatch `(?s)<p><strong>Q\.\s*(.*?)</strong>\s*A\.\s*(.*?)</p>` .Content -}}
+    {{- $faq = $faq | append (dict "@type" "Question" "name" (index . 1 | plainify | htmlUnescape | strings.TrimSpace) "acceptedAnswer" (dict "@type" "Answer" "text" (index . 2 | plainify | htmlUnescape | strings.TrimSpace))) -}}
+  {{- end -}}
+  {{- if $faq }}{{ $graph = $graph | append (dict "@type" "FAQPage" "mainEntity" $faq) }}{{ end -}}
+{{- end -}}
+<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@graph" $graph | jsonify | safeJS }}</script>

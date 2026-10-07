@@ -1,0 +1,27 @@
+# {{ site.Title }}
+
+> {{ site.Params.description }} 運営: Hamnism。アプリ本体: {{ site.Params.lpURL }} / App Store: {{ site.Params.appStoreURL }}
+
+Lichenは、iPhoneとiPadのための掲示板専用ブラウザ(専ブラ)です。5ch・したらば・おーぷん2ちゃんねる・エッヂ・まちBBSなどをひとつのアプリで読み書きできます。広告なし・買い切り。このブログは使い方(機能ガイド)、アップデート履歴、開発者のはなしを載せています。各記事の全文は llms-full.txt にまとめてあります。
+
+## 機能ガイド
+{{ range partial "ordered.html" "guide" }}
+- [{{ .Title }}]({{ .Permalink }}): {{ .Params.description }}
+{{- end }}
+
+## その他
+{{ range partial "ordered.html" "story" }}
+- [{{ .Title }}]({{ .Permalink }}): {{ .Params.description }}
+{{- end }}
+
+## アップデート
+{{ range partial "ordered.html" "release" }}
+- [{{ .Title }}]({{ .Permalink }}): {{ .Params.description }}
+{{- end }}
+
+## 関連
+- [Lichen 公式サイト]({{ site.Params.lpURL }})
+- [App Store]({{ site.Params.appStoreURL }})
+- [利用規約]({{ site.Params.termsURL }})
+- [プライバシーポリシー]({{ site.Params.privacyURL }})
+- [全文版 llms-full.txt]({{ site.BaseURL }}llms-full.txt)

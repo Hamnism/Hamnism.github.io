@@ -48,6 +48,7 @@ iOS 26.0 / iPadOS 26.0 以上 — iPhone・iPad 対応
 - App Store: https://apps.apple.com/jp/app/lichen/id6771805838
 - リリースノート（アップデート履歴）: https://hamnism.com/lichen/blog/release/
 - ブログ（使い方・開発のはなし）: https://hamnism.com/lichen/blog/
+- ブログの記事一覧 (LLM 向け): https://hamnism.com/lichen/blog/llms.txt / 全文: https://hamnism.com/lichen/blog/llms-full.txt
 - 利用規約: https://hamnism.com/lichen/terms.html
 - プライバシーポリシー: https://hamnism.com/lichen/privacy.html
 - 連絡先: info@hamnism.com

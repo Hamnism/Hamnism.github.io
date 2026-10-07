@@ -23,6 +23,12 @@
     </footer>
   </main>
 </div>
+{{- if and .IsPage (ne .Section "") }}
+<div class="mcta" id="mcta" hidden>
+  <span class="mcta-t"><span class="word"></span><span>iPhone・iPadの掲示板専用ブラウザ</span></span>
+  <a class="btn" href="{{ site.Params.appStoreURL }}" target="_blank" rel="noopener">App Storeで見る</a>
+</div>
+{{- end }}
 <script>
 (function () {
   var btn = document.getElementById("burger"), side = document.getElementById("side");
@@ -32,6 +38,17 @@
     btn.setAttribute("aria-expanded", open ? "true" : "false");
     btn.setAttribute("aria-label", open ? "もくじを閉じる" : "もくじを開く");
   });
+  // 狭い画面では記事のもくじを畳んでおく
+  var toc = document.getElementById("toc");
+  if (toc && window.matchMedia("(max-width: 820px)").matches) toc.removeAttribute("open");
+  // スマホ用の下部 CTA: 少し読み進めたら出し、末尾の CTA が見えたら引っ込める
+  var mcta = document.getElementById("mcta"), endCta = document.querySelector(".close .cta");
+  if (mcta) {
+    var endSeen = false;
+    if (endCta && "IntersectionObserver" in window) new IntersectionObserver(function (es) { endSeen = es[0].isIntersecting; sync(); }).observe(endCta);
+    function sync() { mcta.hidden = !(window.scrollY > 600 && !endSeen); }
+    addEventListener("scroll", sync, { passive: true }); sync();
+  }
   // もくじの中のリンクを押したら (同じページ内の見出しへ飛ぶ時も) 畳む。
   side.addEventListener("click", function (e) {
     if (e.target.closest("a")) { side.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); }

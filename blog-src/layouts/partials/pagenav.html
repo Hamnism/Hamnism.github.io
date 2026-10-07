@@ -1,0 +1,13 @@
+{{- /* 記事末尾の前後ナビ。同じ区分の読む順で前と次を出す。 */ -}}
+{{- $list := partial "ordered.html" .Section -}}
+{{- $prev := false }}{{ $next := false }}{{ $n := len $list -}}
+{{- range $i, $p := $list }}{{ if eq $p $ }}
+  {{- if gt $i 0 }}{{ $prev = index $list (sub $i 1) }}{{ end }}
+  {{- if lt (add $i 1) $n }}{{ $next = index $list (add $i 1) }}{{ end }}
+{{- end }}{{ end -}}
+{{- if or $prev $next }}
+<nav class="pagenav" aria-label="前後の記事">
+  {{ with $prev }}<a class="pn prev" href="{{ .RelPermalink }}"><span class="pn-l">前の記事</span><span class="pn-t">{{ .Title }}</span></a>{{ else }}<span></span>{{ end }}
+  {{ with $next }}<a class="pn next" href="{{ .RelPermalink }}"><span class="pn-l">次の記事</span><span class="pn-t">{{ .Title }}</span></a>{{ else }}<span></span>{{ end }}
+</nav>
+{{- end }}

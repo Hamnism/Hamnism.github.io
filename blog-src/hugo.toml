@@ -18,6 +18,9 @@ enableGitInfo = false
   tagline = "iPhoneとiPadのための掲示板専用ブラウザ。使い方と、作っている人のはなし。"
   # Google アナリティクス (GA4) の測定 ID。"G-XXXXXXXXXX" を入れると計測が始まる。空なら何も読み込まない。
   author = "Hamnism"
+  # <title> の末尾 (検索結果に出る)。記事名｜titleSuffix の形。
+  titleSuffix = "Lichen Blog｜iPhone・iPadの5ch専ブラ"
+  appStoreID = "6771805838"
   # SNS カードの共通画像 (記事に ogimage / cover が無い時とトップページ)。blog-src/static/ に置く。
   ogImage = "ogp.jpg"
   ga4 = "G-50Y57JTGTK"
@@ -36,8 +39,19 @@ enableGitInfo = false
   ordered = true
 
 [outputs]
-  home = ["HTML", "RSS", "SearchIndex"]
+  home = ["HTML", "RSS", "SearchIndex", "LLMS", "LLMSFull"]
   section = ["HTML"]
+
+[outputFormats.LLMS]
+  mediaType = "text/plain"
+  baseName = "llms"
+  isPlainText = true
+  notAlternative = true
+[outputFormats.LLMSFull]
+  mediaType = "text/plain"
+  baseName = "llms-full"
+  isPlainText = true
+  notAlternative = true
 
 [outputFormats.SearchIndex]
   mediaType = "application/json"

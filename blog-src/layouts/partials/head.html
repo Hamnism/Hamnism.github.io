@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-{{- $title := cond .IsHome site.Title (printf "%s｜%s" .Title site.Title) -}}
+{{- $title := cond .IsHome (printf "%s｜%s" site.Title "iPhone・iPadの掲示板専用ブラウザLichenの使い方") (printf "%s｜%s" .Title (site.Params.titleSuffix | default site.Title)) -}}
 {{- $desc := .Params.description | default .Summary | default site.Params.description | plainify | truncate 120 -}}
 <title>{{ $title }}</title>
 <meta name="description" content="{{ $desc }}">
@@ -11,6 +11,8 @@
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:type" content="{{ cond .IsPage "article" "website" }}">
 <meta property="og:locale" content="ja_JP">
+{{- /* iPhone の Safari で上部に出る App Store の純正バナー */ -}}
+<meta name="apple-itunes-app" content="app-id={{ site.Params.appStoreID }}">
 {{- /* OG 画像の優先順: 記事の ogimage (そのまま使う) → 記事の cover (1200x630 に切り抜き) → サイト共通 (params.ogImage) */ -}}
 {{- $og := site.Params.ogImage | default "https://hamnism.com/lichen/ogp.png" | absURL -}}
 {{- with .Params.cover }}{{ with $.Resources.GetMatch . }}{{ $og = (.Fill "1200x630 Center").Permalink }}{{ end }}{{ end }}
@@ -20,7 +22,9 @@
 <meta name="twitter:image" content="{{ $og }}">
 {{- if .IsPage }}
 <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+<meta property="article:modified_time" content="{{ (cond .Lastmod.IsZero .Date .Lastmod).Format "2006-01-02T15:04:05Z07:00" }}">
 {{- end }}
+{{ partial "jsonld.html" . }}
 {{ with .OutputFormats.Get "rss" }}<link rel="alternate" type="application/rss+xml" title="{{ site.Title }}" href="{{ .Permalink }}">{{ end }}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

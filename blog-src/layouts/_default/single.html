@@ -1,6 +1,6 @@
 {{ define "main" }}
 <article class="art">
-  {{- with partial "catlabel.html" . }}<div class="cat">{{ . }}</div>{{ end }}
+  {{ partial "crumbs.html" . }}
   <h1>{{ .Title }}</h1>
   <div class="meta byline">
     <span>{{ .Params.author | default site.Params.author }}</span>
@@ -11,13 +11,14 @@
   </div>
   {{- if .Params.cover }}{{ partial "cover.html" (dict "page" . "link" false "eager" true) }}{{ end }}
   {{- if and (ne .Params.toc false) (gt (len (findRE `<h2` .Content)) 1) }}
-  <nav class="toc" aria-label="この記事のもくじ">
-    <div class="toc-h">もくじ</div>
+  <details class="toc" id="toc" open>
+    <summary class="toc-h">もくじ</summary>
     {{ .TableOfContents }}
-  </nav>
+  </details>
   {{- end }}
   <div class="body">
-    {{ .Content }}
+    {{- /* 「**Q. …**」+「A. …」の段落を FAQ の体裁に */}}
+    {{ .Content | replaceRE `(?s)<p><strong>Q\.\s*(.*?)</strong>\s*A\.\s*(.*?)</p>` `<div class="faq"><p class="q">$1</p><p class="a">$2</p></div>` | safeHTML }}
   </div>
   <div class="close">
     {{- if ne .Section "release" }}
@@ -38,5 +39,6 @@
     </div>
   </div>
 </article>
+{{ partial "pagenav.html" . }}
 {{ if ne .Section "release" }}{{ partial "related.html" . }}{{ end }}
 {{ end }}
