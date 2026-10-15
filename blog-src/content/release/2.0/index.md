@@ -4,7 +4,7 @@ date: 2026-10-04T12:00:00+09:00
 id: R20
 slug: "2.0"
 description: "「再誕」— フィード・Tabs の刷新、テーマカスタムとホーム画面ウィジェットの追加、広告の撤廃。"
-weight: 1
+weight: 2
 toc: true
 ---
 
