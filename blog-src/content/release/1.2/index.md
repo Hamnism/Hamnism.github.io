@@ -4,7 +4,7 @@ date: 2026-06-07T12:00:00+09:00
 id: R12
 slug: "1.2"
 description: "掲示板体験をより快適にするための機能追加と高速化。"
-weight: 3
+weight: 4
 toc: true
 ---
 
