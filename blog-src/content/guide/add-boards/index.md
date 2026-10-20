@@ -62,8 +62,8 @@ URLを入力すると、入力欄の下に、そのURLがどのサイトのも�
 
 したらばは、掲示板全体のBBSMENUがないため、コミュニティごとにひとつずつ追加します。シートの中にも例が出ていますが、次のような形のURLを貼り付けます。
 
-- https://jbbs.shitaraba.net/[カテゴリ]/[番号]/
-- https://jbbs.shitaraba.net/bbs/subject.cgi/[カテゴリ]/[番号]/
+- `https://jbbs.shitaraba.net/[カテゴリ]/[番号]/`
+- `https://jbbs.shitaraba.net/bbs/subject.cgi/[カテゴリ]/[番号]/`
 
 スレのURLを貼り付けた場合も、そのスレがある掲示板として追加できます。
 
