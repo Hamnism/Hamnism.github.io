@@ -55,7 +55,7 @@
       {{- else }}<div class="empty">準備中です</div>{{ end }}
     </details>
     {{- range where (where site.RegularPages "Section" "") "Params.hidden" "ne" true }}
-    <a href="{{ .RelPermalink }}"{{ if eq . $cur }} class="cur" aria-current="page"{{ end }}>{{ .Title }}</a>
+    <a href="{{ .RelPermalink }}"{{ if eq . $cur }} class="cur" aria-current="page"{{ end }}>{{ .Params.short | default .Title }}</a>
     {{- end }}
     <a class="store" href="{{ site.Params.appStoreURL }}" target="_blank" rel="noopener">App Storeで見る</a>
   </nav>
