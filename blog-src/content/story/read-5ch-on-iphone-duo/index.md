@@ -29,7 +29,9 @@ Duoを開いたときと閉じたときで、それぞれの画面に合わせ�
 
 ### 閉じたとき：iPhoneのように
 
-Duoを閉じて外側の画面で使うときは、iPhoneと同じ感覚で使えます。下のタブバーからHome・Search・Tabsなどを行き来し、スレは画面いっぱいに表示されます。片手でさっと読みたいときに向いています。
+Duoを閉じて外側の画面で使うときは、iPhoneに近い感覚で使えます。スレは画面いっぱいに表示され、片手でさっと読みたいときに向いています。Home・Search・Tabsなどに移るタブバーは、Duoに合わせて画面の右端に縦に並びます。
+
+<figure><img src="duo-closed.webp" alt="iPhone Duoを閉じた外側の画面で表示したLichenのHome。右端にタブバーが縦に並んでいる" width="450" loading="lazy"><figcaption>閉じた外側の画面。右端にタブバーが縦に並びます。</figcaption></figure>
 
 ### 開いたとき：iPadのように
 
@@ -38,6 +40,12 @@ Duoを開いて内側の画面で使うときは、iPadのような広い画面�
 - **2カラム表示**：左にスレ一覧、右にスレを並べて、一覧から次々にスレを読める
 - **Homeの複数列**：Homeの「Discovery」が広い画面に合わせて並び、盛り上がっているスレを一度にたくさん見渡せる
 - **一回り大きい文字**：広い画面に合わせて、文字が少し大きめになる
+
+<figure><img src="duo-open-thread.webp" alt="iPhone Duoを開いた内側の画面で、左にスレ一覧、右にスレを並べた2カラム表示" width="700" loading="lazy"><figcaption>開いた内側の画面。左にスレ一覧、右にスレの2カラム表示。</figcaption></figure>
+
+Homeは、左に最近見たスレの列、右にDiscoveryのカードが並ぶ、広い画面向けのレイアウトになります。
+
+<figure><img src="duo-open-home.webp" alt="iPhone Duoを開いた内側の画面で表示したLichenのHome。左に最近見たスレ、右にDiscoveryのカードが2列で並ぶ" width="700" loading="lazy"><figcaption>開いた内側の画面のHome。</figcaption></figure>
 
 ### Duoの画面に合わせた、Lichenならではの調整
 
