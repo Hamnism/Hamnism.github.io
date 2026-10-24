@@ -3,6 +3,7 @@ title: "無料トライアルと製品版｜7日間のお試しと購入・復�
 date: 2026-10-22T10:00:00+09:00
 id: F47
 slug: trial-and-purchase
+cover: cover.jpg
 description: "Lichenは、初回起動から7日間すべての機能を無料で試せます。トライアル中の表示、終わったあとに使える範囲、製品版（¥800・買い切り）の購入と復元、以前に購入した方の扱いを紹介します。"
 step: 1
 closing: 1

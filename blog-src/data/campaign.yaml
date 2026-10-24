@@ -1,0 +1,10 @@
+# キャンペーンのバナー。enabled を false にすると、トップと記事末尾のバナーがまとめて消える。
+# 画像は static/campaign/ に置く (1600px 幅と 800px 幅の 2 つ)。
+enabled: true
+image: "campaign/trial-2.1.webp"
+image_small: "campaign/trial-2.1-800.webp"
+alt: "Lichen 2.1 アップデート記念。iPhoneのための、広告のない掲示板専用ブラウザ。7日間無料トライアル（アプリの初回起動から計算）。買い切り・追加課金なし"
+# クリック先。空なら App Store。
+link: ""
+# このバナーと同じ画像を見出しに使っている記事では出さない (記事 id)
+skip: ["F47"]

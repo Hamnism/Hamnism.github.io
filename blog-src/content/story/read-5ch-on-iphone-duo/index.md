@@ -3,6 +3,8 @@ title: "iPhone Duoで5chを読む方法｜開いても閉じても快適な専�
 date: 2026-10-23T01:20:00+09:00
 id: M13
 slug: read-5ch-on-iphone-duo
+cover: thumb.jpg
+ogimage: thumb.jpg
 description: "iPhone Duoで5chを読むなら、Duoの2つの画面に対応した専ブラがおすすめです。閉じたときはiPhoneのように、開いたときはiPadのように使える、掲示板専用ブラウザLichenのiPhone Duo対応を紹介します。"
 closing: 1
 short: "iPhone Duoで5chを読む"

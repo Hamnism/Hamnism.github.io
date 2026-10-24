@@ -1,6 +1,7 @@
 {{ define "main" }}
 {{- /* トップ: 新着 3 本 → 機能ガイド (Step1〜3 の道筋) → アップデート (最新ビルドの抜粋) → 開発ノート → App Store */ -}}
 <h1 class="sr-only">{{ site.Title }}</h1>
+<div class="hcampaign">{{ partial "campaign.html" . }}</div>
 {{- $new := first 3 (where site.RegularPages "Section" "in" (slice "guide" "story")).ByDate.Reverse }}
 <section class="hsec">
   <h2 class="hsec-h">新着</h2>
