@@ -7,6 +7,15 @@ description: "ChMateはAndroid向けの5ch専ブラで、iPhone版（iOS版）�
 closing: 1
 short: "ChMateのiPhone版はある？"
 related: [M03, F07, F12, F14]
+faq:
+  - q: "ChMateのiPhone版はありますか？"
+    a: "ありません。ChMateはAndroid向けの専ブラで、App Storeでは配信されていません。"
+  - q: "iPhoneでChMateのように5chを読むには？"
+    a: "App Storeで配信されているiPhone向けの5ch専ブラに乗り換えます。タブ、アンカーのポップアップ、NG機能、続きから読む機能、書き込みとUPLIFTへの対応を確かめて選びます。"
+  - q: "ChMateのお気に入りや履歴は、iPhoneに引き継げますか？"
+    a: "基本的に引き継げません。Lichenにも、ほかの専ブラのデータを読み込む機能はないので、よく見る板やスレはお気に入りに登録し直します。"
+  - q: "Lichenは広告なしで5chを読めますか？"
+    a: "はい。Lichenには広告が表示されません。"
 ---
 
 ChMateはAndroid向けの5ch専ブラで、**iPhone版（iOS版）はありません**（2026年10月時点）。
@@ -69,3 +78,5 @@ ChMateのお気に入りや履歴、NGの設定を、iPhoneの専ブラにその
 よく見る板やスレは、iPhoneの専ブラで開き直して、お気に入りに登録し直すのがいちばん確実です。Lichenでは、板やスレのURLから追加することもできます（{{< post "F34" "板を追加する" >}}）。
 
 NGは、よく使っていたIDやワードを、少しずつ登録し直していくのがおすすめです。
+
+{{< faq >}}

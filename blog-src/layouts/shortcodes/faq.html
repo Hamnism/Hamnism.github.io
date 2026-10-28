@@ -1,0 +1,16 @@
+{{- /*
+  本文にFAQを表示するショートコード。
+  使い方: 記事本文の好きな位置に {{< faq >}}
+  front matter の faq: をそのまま描画するので、JSON-LD (FAQPage、partials/jsonld.html) と表示内容が必ず一致する。
+*/ -}}
+{{- with .Page.Params.faq -}}
+<section class="faq">
+  <h2 id="faq">よくある質問</h2>
+  {{- range . }}
+  <details>
+    <summary>{{ .q }}</summary>
+    <div>{{ .a | markdownify }}</div>
+  </details>
+  {{- end }}
+</section>
+{{- end -}}
