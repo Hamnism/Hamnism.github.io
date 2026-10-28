@@ -33,7 +33,7 @@ Lichenでは、利用している人が多く、それぞれに独自のコミ�
 | 5ちゃんねる | https://5ch.io/ | 表示 | 可能。UPLIFT対応 |
 | エッヂ | https://bbs.eddibb.cc/ | 表示 | 可能。別途認証要 |
 | まちBBS | https://machi.to/ | 表示 | 閲覧のみ |
-| ぷにぷに板 | https://bbs.punipuni.eu/ | 表示 | 可能。別途認証要 |
+| ぷにぷに板 | https://punipuni.eu/ | 表示 | 可能。別途認証要 |
 | おーぷん2ちゃんねる | https://open2ch.net/ | 非表示 | 可能 |
 | 2ちゃんねる(sc) | https://2ch.sc/ | 非表示 | 閲覧のみ |
 | Next2ch | https://next2ch.net/ | 非表示 | 可能 |
